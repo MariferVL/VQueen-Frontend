@@ -1,0 +1,14 @@
+<section id="mainAdmin" *ngIf="isLoggedIn()">
+    <router-outlet>
+
+        <app-manager></app-manager>
+    </router-outlet>
+    <button (click)="logout()">LogOut</button>
+</section>
+
+<section id="loginAdmin" *ngIf="!isLoggedIn()">
+    <header>
+        <h2>Admin V Queen</h2>
+    </header>
+    <app-login></app-login>
+</section>
