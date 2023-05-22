@@ -1,0 +1,23 @@
+<h2>Employees Management</h2>
+<a routerLink="/admin/employee/add-employee">
+  <button>Add Employee</button>
+</a>
+<router-outlet></router-outlet>
+
+<figure *ngIf="isLoading">
+  <img src="" alt="Loading">
+  <figcaption>Loading...</figcaption>
+</figure>
+
+<div class="content-box" *ngFor="let employee of employees">
+  <h3>{{ employee.id }}</h3>
+  <p>Email: {{employee.email}}</p>
+  <p>Password: £{{ employee.password }}</p>
+  <p>Role: {{employee.role}}</p>
+  <div class="buttons-container">
+    <a routerLink="/admin/employees/edit/{{employee.id}}">Edit</a>
+
+    <button (click)="onDeleteClicked(employee.id)">Delete</button>
+  </div>
+
+</div>

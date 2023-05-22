@@ -1,0 +1,19 @@
+<section id="employeeLogin" *ngIf="!isLoggedIn()">
+  <form (ngSubmit)="login()">
+    <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
+    <input type="password" [(ngModel)]="password" name="password" placeholder="Password" [type]="showPassword ? 'text' : 'password'" required>
+    <label>
+      <input type="checkbox" [(ngModel)]="showPassword" name="showPassword"> Show Password
+    </label>
+    <button type="submit">Login</button>
+  </form>
+</section>
+
+<section *ngIf="isLoggedIn()">
+  <h2>Welcome!</h2>
+  <h5></h5>
+  <a href="">Make Order</a>
+  <a href="">Check My Orders</a>
+  <a href=""></a>
+  <button (click)="logout()">LogOut</button>
+</section>

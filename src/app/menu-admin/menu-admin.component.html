@@ -1,0 +1,22 @@
+<h2>Menu Management</h2>
+<a routerLink="/admin/menu/add-product">
+  <button>Add New Product</button>
+</a>
+
+<figure *ngIf="isLoading">
+  <img src="" alt="Loading">
+  <figcaption>Loading...</figcaption>
+</figure>
+
+<div class="content-box" *ngFor="let menu of menus">
+  <h3>{{ menu.name }}</h3>
+  <p>Picture: {{menu.image}}</p>
+  <p>Price: £{{ menu.price }}</p>
+  <div class="buttons-container">
+    <a routerLink="/admin/menu/edit/{{menu.id}}">Edit</a>
+
+    <button (click)="onDeleteClicked(menu.id)">Delete</button>
+  </div>
+
+</div>
+
