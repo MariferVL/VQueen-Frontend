@@ -23,7 +23,7 @@ export class EditEmployeeComponent implements OnInit{
   ngOnInit(): void {
     this.titleService.setTitle('VQAdmin - Edit Member Data');
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.adminService.getEmployeesById(id)
+    this.adminService.getUserById(id)
       .subscribe(employee => this.employee = employee);
   }
 
@@ -31,11 +31,11 @@ export class EditEmployeeComponent implements OnInit{
     if (this.employee) {
       console.log('employee id: ',this.employee.id, ', ', this.employee.email,', ',  this.employee.role);
 
-      this.adminService.editEmployee(this.employee.id, email, password, role)
+      this.adminService.editUser(this.employee.id, email, password, role)
         .subscribe(() => {
           console.log('Saving changes');
           //TODO: PREGUNTA: Esto es apropiado? Porque funciona😅       
-          window.location.href = '/admin/employee';
+          window.location.href = '/admin/member';
         });
     }
   }

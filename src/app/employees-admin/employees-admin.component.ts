@@ -20,7 +20,7 @@ export class EmployeesAdminComponent {
 
   ngOnInit() {
     this.titleService.setTitle('VQAdmin - Employee Data');
-    this.adminService.getEmployees()
+    this.adminService.getUsers()
       .subscribe(employees => {
         this.employees = employees;
         this.isLoading = false;
@@ -28,7 +28,7 @@ export class EmployeesAdminComponent {
   }
 
   onDeleteClicked(employeeId: number): void {
-    this.adminService.deleteEmployee(employeeId)
+    this.adminService.deleteUser(employeeId)
       .subscribe(() => {
         this.employees = this.employees.filter( employee => employee.id !== employeeId)
       })
