@@ -27,9 +27,9 @@ import { MenuFormComponent } from './menu-form/menu-form.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
+import { ColabOrdersComponent } from './colab-orders/colab-orders.component';
 
 @NgModule({
   declarations: [
@@ -55,9 +55,9 @@ import { EmployeeFormComponent } from './employee-form/employee-form.component';
     MenuFormComponent,
     NavBarComponent,
     LoginComponent,
-    LoginAdminComponent,
     AddEmployeeComponent,
     EmployeeFormComponent,
+    ColabOrdersComponent,
   ],
   imports: [
     BrowserModule,
