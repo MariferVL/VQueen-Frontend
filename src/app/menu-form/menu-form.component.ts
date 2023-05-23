@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 import { Product } from '../types';
 
 @Component({
@@ -15,18 +14,17 @@ export class MenuFormComponent implements OnInit {
   @Input() currentType = '';
 
 
-  id: string = '';
+  id: number = 0;
   name: string = '';
   image: string = '';
   price: number = 0;
   type: string = '';
   dateEntry: string = '';
 
- 
 
   @Output() onSubmit = new EventEmitter<Product>();
 
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.name = this.currentName;
@@ -36,6 +34,10 @@ export class MenuFormComponent implements OnInit {
 
   }
 
+  /**
+   * Take data from menu form and send it trough a method 
+   * that emits an event containing that data.
+   */
   onClick(): void {
     this.onSubmit.emit({
       id: this.generateUniqueId(),
@@ -54,7 +56,7 @@ export class MenuFormComponent implements OnInit {
   private generateUniqueId(): number {
     const timestamp = Date.now();
     const randomString = Math.random();
-    return timestamp + randomString;
+    return Math.floor(timestamp + randomString);
   }
 
   /**
