@@ -1,8 +1,27 @@
 {
-    "/*": {
-        "target": "http://127.0.0.1:8080",
-        "secure": false,
-        "logLevel": "debug",
-        "changeOrigin": true
+    "/login/*": {
+      "target": "http://localhost:8080",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    },
+    "/users/*": {
+      "target": "http://localhost:8080",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    },
+    "/products/*": {
+      "target": "http://localhost:8080",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    },
+    "/orders/*": {
+      "target": "http://localhost:8080",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
     }
-}
+  }
+  
