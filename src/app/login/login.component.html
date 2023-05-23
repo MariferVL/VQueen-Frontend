@@ -9,11 +9,12 @@
   </form>
 </section>
 
-<section *ngIf="isLoggedIn()">
+<section *ngIf="isLoggedIn() && userRole !== 'client'">
   <h2>Welcome!</h2>
   <h5></h5>
-  <a href="">Make Order</a>
-  <a href="">Check My Orders</a>
-  <a href=""></a>
+  <a routerLink="/colab/take-order" class="btn">Take Order</a>
+  <a routerLink="/colab/my-orders" class="btn">Check My Orders</a>
+  <!-- TODO: PREGUNTA: Cómo mejorar esto? Achicar botones tipo navbar-->
+  <router-outlet></router-outlet>
   <button (click)="logout()">LogOut</button>
 </section>

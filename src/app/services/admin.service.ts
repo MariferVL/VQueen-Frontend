@@ -54,17 +54,17 @@ export class AdminService {
     );
   }
 
-  getEmployees(): Observable<User[]> {
+  getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/users`,
     this.httpOptions,);
   }
 
-  getEmployeesById(id: number): Observable<User> {
+  getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/users/${id}`,
     this.httpOptions,)
   }
 
-  addEmployee(id: number, email: string, password:string, role:string): Observable<User> {
+  addUser(id: number, email: string, password:string, role:string): Observable<User> {
     return this.http.post<User>(
       `${this.apiUrl}/users`,
       {id, email, password, role},
@@ -72,7 +72,7 @@ export class AdminService {
     );
   }
 
-  editEmployee(id: number, email: string, password:string, role:string): Observable<User> {
+  editUser(id: number, email: string, password:string, role:string): Observable<User> {
     return this.http.patch<User>(
       `${this.apiUrl}/users/${id}`,
       {id, email, password, role},
@@ -81,7 +81,7 @@ export class AdminService {
   }
 
 
-  deleteEmployee(id: number): Observable<any> {
+  deleteUser(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/users/${id}`,
     this.httpOptions,)
   }
