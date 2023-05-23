@@ -15,7 +15,7 @@ export class AddEmployeeComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('VQAdmin - Add Employee');
+    this.titleService.setTitle('VQAdmin - Add Member');
   }
 
   onSubmit({ id, email, password, role }:

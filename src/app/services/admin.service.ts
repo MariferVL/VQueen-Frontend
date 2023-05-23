@@ -48,7 +48,7 @@ export class AdminService {
   }
 
   editMenu(id: number, name: string,price: number, image: string, type: string, dateEntry: string ): Observable<Product> {
-    return this.http.post<Product>(`${this.apiUrl}/products/${id}`,
+    return this.http.patch<Product>(`${this.apiUrl}/products/${id}`,
       {id, name, price, image, type, dateEntry},
       this.httpOptions,
     );
@@ -73,7 +73,7 @@ export class AdminService {
   }
 
   editEmployee(id: number, email: string, password:string, role:string): Observable<User> {
-    return this.http.post<User>(
+    return this.http.patch<User>(
       `${this.apiUrl}/users/${id}`,
       {id, email, password, role},
       this.httpOptions,

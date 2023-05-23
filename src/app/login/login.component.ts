@@ -23,6 +23,7 @@ export class LoginComponent implements OnDestroy {
     this.authService.login(this.email, this.password)
     .subscribe({
       next: (response: any) => {
+        //TODO: PREGUNTA: cuánto dura un token? Pq se reinicia constantemente
         this.authService.accessToken = response.accessToken;
         console.log('In next this.accessToken:', this.authService.accessToken);
       },
