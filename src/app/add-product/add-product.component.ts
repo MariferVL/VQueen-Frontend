@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AdminService } from '../services/admin.service';
 
@@ -7,7 +7,7 @@ import { AdminService } from '../services/admin.service';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent {
+export class AddProductComponent implements OnInit {
 
   constructor(
     private titleService: Title,
@@ -18,9 +18,9 @@ export class AddProductComponent {
     this.titleService.setTitle('VQAdmin - Add Product');
   }
 
-  onSubmit({ name, price, image }:
-    { name: string, price: number, image: string }): void {
-    this.adminService.createMenu(name, price, image)
+  onSubmit({ id, name, price, image, type, dateEntry }:
+    { id: number, name: string, price: number, image: string, type: string, dateEntry: string }): void {
+    this.adminService.createMenu(id, name, price, image, type, dateEntry )
       .subscribe(() => {
         window.location.href = '/admin/menu';
         console.log('Creating a new delicacy.👑');

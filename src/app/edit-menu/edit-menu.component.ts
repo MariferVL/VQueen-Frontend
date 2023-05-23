@@ -19,11 +19,7 @@ export class EditMenuComponent implements OnInit {
     private adminService: AdminService,
   ) { }
 
-  /**
-   * Lifecycle hook to fetch the menu details. 
-   * Ensures that the component has finished initializing and 
-   * the view is rendered before making the API call.
-   */
+  
   ngOnInit(): void  {
     this.titleService.setTitle('VQAdmin - Edit Menu');
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -31,11 +27,12 @@ export class EditMenuComponent implements OnInit {
       .subscribe(menu => this.menu = menu);
   }
 
-  onSubmit({ name, price, image }:{ name: string, price: number, image: string }): void {
+  onSubmit({ name, price, image, type }:{ name: string, price: number, image: string, type: string }): void {
     if (this.menu) {
       console.log('menu: ', this.menu.name, this.menu.price);
 
-      this.adminService.editMenu(this.menu.id, name, price, image)
+      this.adminService.editMenu(this.menu.id, name, price, image, type, this.menu.
+        dateEntry)
         .subscribe(() => {
           console.log('Saving changes');  
           //TODO: PREGUNTA: Esto es apropiado? Porque funciona😅       
