@@ -38,18 +38,18 @@ export class AdminService {
     return this.http.delete(`${this.apiUrl}/products/${id}`,
     this.httpOptions,)
   }
-//FIXME: adaptar argumentos para api SERGIO
-  createMenu(name: string, price: number, image:string): Observable<Product> {
+
+  createMenu(id: number, name: string, price: number, image:string, type: string, dateEntry: string ): Observable<Product> {
     return this.http.post<Product>(
       `${this.apiUrl}/products`,
-      {name, price, image},
+      {id, name, price, image, type, dateEntry },
       this.httpOptions,
     );
   }
 
-  editMenu(id: number, name: string,price: number, image: string): Observable<Product> {
+  editMenu(id: number, name: string,price: number, image: string, type: string, dateEntry: string ): Observable<Product> {
     return this.http.post<Product>(`${this.apiUrl}/products/${id}`,
-      {name, price, image},
+      {id, name, price, image, type, dateEntry},
       this.httpOptions,
     );
   }
@@ -59,9 +59,14 @@ export class AdminService {
     this.httpOptions,);
   }
 
+  getEmployeesById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/users/${id}`,
+    this.httpOptions,)
+  }
+
   addEmployee(id: number, email: string, password:string, role:string): Observable<User> {
     return this.http.post<User>(
-      `${this.apiUrl}/products`,
+      `${this.apiUrl}/users`,
       {id, email, password, role},
       this.httpOptions,
     );
@@ -69,7 +74,7 @@ export class AdminService {
 
   editEmployee(id: number, email: string, password:string, role:string): Observable<User> {
     return this.http.post<User>(
-      `${this.apiUrl}/products`,
+      `${this.apiUrl}/users/${id}`,
       {id, email, password, role},
       this.httpOptions,
     );
