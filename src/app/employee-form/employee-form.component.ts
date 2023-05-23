@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 import { User } from '../types';
 
 @Component({
@@ -7,6 +6,7 @@ import { User } from '../types';
   templateUrl: './employee-form.component.html',
   styleUrls: ['./employee-form.component.css']
 })
+
 export class EmployeeFormComponent implements OnInit {
   @Input() buttonText: any;
   @Input() currentEmail = '';
@@ -19,25 +19,27 @@ export class EmployeeFormComponent implements OnInit {
   password: string = '';
   role: string = '';
 
- 
-
   @Output() onSubmit = new EventEmitter<User>();
 
-  constructor(private router: Router) {}
+  constructor() { }
 
   ngOnInit(): void {
     this.email = this.currentEmail;
-    this.password = this.currentPassword;    
+    this.password = this.currentPassword;
     this.role = this.currentRole;
 
   }
 
+  /**
+   * Take data from employee form and send it trough a method 
+   * that emits an event containing that data.
+   */
   onClick(): void {
     this.onSubmit.emit({
       id: this.generateUniqueId(),
       email: this.email,
       password: this.password,
-      role : this.role,
+      role: this.role,
     });
   }
 
@@ -48,9 +50,9 @@ export class EmployeeFormComponent implements OnInit {
   private generateUniqueId(): number {
     const timestamp = Date.now();
     const randomString = Math.random();
-    return timestamp + randomString;
+    return Math.floor(timestamp + randomString);
   }
 
 
-  
+
 }
