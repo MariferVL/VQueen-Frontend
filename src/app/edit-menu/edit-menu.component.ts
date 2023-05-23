@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from '../types';
 import { AdminService } from '../services/admin.service';
 
@@ -15,7 +15,6 @@ export class EditMenuComponent implements OnInit {
   constructor(
     private titleService: Title,
     private route: ActivatedRoute,
-    private router: Router,
     private adminService: AdminService,
   ) { }
 

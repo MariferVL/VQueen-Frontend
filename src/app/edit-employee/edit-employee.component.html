@@ -1,1 +1,13 @@
-<p>edit-employee works!</p>
+<section class="content-box" *ngIf="employee">
+    <h2>Edit Member Data</h2>
+    <app-employee-form buttonText="Save Changes" 
+        [currentEmail]="employee.email" 
+        [currentPassword]="employee.password" 
+        [currentRole]="employee.role"
+        (onSubmit)="onSubmit($event)"></app-employee-form>
+</section>
+
+<figure *ngIf="!employee">
+    <img src="" alt="Loading">
+    <figcaption>Loading...</figcaption>
+</figure>

@@ -21,7 +21,7 @@ export class EditEmployeeComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.titleService.setTitle('VQAdmin - Edit Employees Data');
+    this.titleService.setTitle('VQAdmin - Edit Member Data');
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.adminService.getEmployeesById(id)
       .subscribe(employee => this.employee = employee);
@@ -29,7 +29,7 @@ export class EditEmployeeComponent implements OnInit{
 
   onSubmit({  email, password, role }: { email: string, password:string, role:string }): void {
     if (this.employee) {
-      console.log('employee: ', this.employee.email, this.employee.role);
+      console.log('employee id: ',this.employee.id, ', ', this.employee.email,', ',  this.employee.role);
 
       this.adminService.editEmployee(this.employee.id, email, password, role)
         .subscribe(() => {
