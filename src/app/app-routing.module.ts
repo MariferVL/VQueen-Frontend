@@ -8,14 +8,15 @@ import { KitchenComponent } from './kitchen/kitchen.component';
 import { ReadyComponent } from './ready/ready.component';
 import { LocationsComponent } from './locations/locations.component';
 import { OrderReceivedComponent } from './order-received/order-received.component';
+import { ManagerComponent } from './manager/manager.component';
 import { EmployeesAdminComponent } from './employees-admin/employees-admin.component';
 import { MenuAdminComponent } from './menu-admin/menu-admin.component';
 import { EditMenuComponent } from './edit-menu/edit-menu.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { AddProductComponent } from './add-product/add-product.component';
-import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { LoginComponent } from './login/login.component';
+import { ColabOrdersComponent } from './colab-orders/colab-orders.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
@@ -23,7 +24,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, pathMatch: 'full' },
   { path: 'kitchen', component: KitchenComponent },
   { path: 'locations', component: LocationsComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'menu/:id', component: DetailedMenuComponent },
   { path: 'order', component: DetailedOrderComponent },
@@ -31,12 +31,12 @@ const routes: Routes = [
   { path: 'ready', component: ReadyComponent },
   {
     path: 'admin',
-    component: LoginAdminComponent,
+    component: ManagerComponent,
     children: [
-      { path: 'employee', component: EmployeesAdminComponent, 
+      { path: 'member', component: EmployeesAdminComponent, 
       children: [
         { path: 'edit/:id', component: EditEmployeeComponent },
-        { path: 'add-employee', component: AddEmployeeComponent },
+        { path: 'add-member', component: AddEmployeeComponent },
 
       ], },
       { path: 'menu', component: MenuAdminComponent,
@@ -44,6 +44,14 @@ const routes: Routes = [
         { path: 'edit/:id', component: EditMenuComponent },
         { path: 'add-product', component: AddProductComponent },
       ], },
+    ],
+  },
+  {
+    path: 'colab',
+    component: LoginComponent,
+    children: [
+      { path: 'take-order', component: MenuComponent },
+      { path: 'my-orders', component: ColabOrdersComponent },
     ],
   },
   // Add a wildcard route to handle unknown URLs
