@@ -33,7 +33,7 @@ const routes: Routes = [
     path: 'admin',
     component: LoginAdminComponent,
     children: [
-      { path: 'employees', component: EmployeesAdminComponent, 
+      { path: 'employee', component: EmployeesAdminComponent, 
       children: [
         { path: 'edit/:id', component: EditEmployeeComponent },
         { path: 'add-employee', component: AddEmployeeComponent },
