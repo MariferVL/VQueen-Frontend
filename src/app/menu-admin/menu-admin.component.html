@@ -1,8 +1,10 @@
 <h2>Menu Management</h2>
-<a routerLink="/admin/menu/add-product">
-  <button>Add New Product</button>
-</a>
 
+<router-outlet> 
+  <a routerLink="/admin/menu/add-product">
+    <button>Add New Product</button>
+  </a>
+</router-outlet>
 <figure *ngIf="isLoading">
   <img src="" alt="Loading">
   <figcaption>Loading...</figcaption>
