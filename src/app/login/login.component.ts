@@ -15,7 +15,6 @@ export class LoginComponent implements OnDestroy {
   email: string = '';
   password: string = '';
   private subscription: Subscription = new Subscription();
-  private accessToken: any;
   showPassword: boolean = false;
   userRole: string = '';
   userID: number = 0;
@@ -28,12 +27,12 @@ export class LoginComponent implements OnDestroy {
 
   
   login(): void {
-    console.log(this.email + ' ' +  this.password);
     this.authService.login(this.email, this.password)
     .subscribe({
       next: (response: any) => {
         //TODO: PREGUNTA: cuánto dura un token? Pq se reinicia constantemente
         this.authService.accessToken = response.accessToken;
+
         //TODO: PREGUNTA: Es mejor dejar esto en auth.service???
         this.adminService.getUsers().subscribe((users: User[]) => {
           const user = users.find((user) => user.email === this.email);
@@ -41,15 +40,12 @@ export class LoginComponent implements OnDestroy {
             this.userRole = user.role;
             this.userID = user.id;
 
-            console.log('this.userRole:', this.userRole);
-            console.log('this.userID:', this.userID);
-
+          
           } else {
             console.log('User not found.');
           }
         });
         
-        console.log('In next this.accessToken:', this.authService.accessToken);
       },
       error: (error: any) => {
         console.error(error);
@@ -57,12 +53,26 @@ export class LoginComponent implements OnDestroy {
     });
   }
 
+  get accessToken(): string | undefined {
+    const token = localStorage.getItem(this.authService.accessToken);
+    return token !== null ? token : undefined;
+  }
+
+  set accessToken(token: string | undefined) {
+    if (token) {
+      localStorage.setItem(this.authService.accessToken, token);
+    } else {
+      localStorage.removeItem(this.authService.accessToken);
+    }
+  }
+
+  //TODO: PREGUNTA: Esto está bien o debiese llamar al metodo en authservice?
   isLoggedIn(): boolean {
     return !!this.authService.accessToken;
   }
   
   logout(): void {
-    this.authService.accessToken = undefined;
+    this.authService.accessToken = '';
   }
 
   ngOnDestroy(): void {
