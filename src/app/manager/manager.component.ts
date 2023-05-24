@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from '../services/auth.service';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-manager',
@@ -8,9 +9,12 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./manager.component.css']
 })
 export class ManagerComponent {
+  userRole: string = '';
+
   constructor(
     private titleService: Title,
-    private authService: AuthService
+    private authService: AuthService,
+    private login: LoginComponent,
     ) {}
 
   ngOnInit() {
@@ -18,11 +22,12 @@ export class ManagerComponent {
   }
 
   isLoggedIn(): boolean {
+    this.userRole = this.login.userRole;
     return !!this.authService.accessToken;
   }
   
   logout(): void {
-    this.authService.accessToken = undefined;
+    this.authService.accessToken = '';
   }
 }
 
