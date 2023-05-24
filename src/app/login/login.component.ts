@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'; import { AuthService } from '../services/auth.service';
 import { User } from '../types';
 import { AdminService } from '../services/admin.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -60,8 +61,7 @@ export class LoginComponent {
     console.log('entró a Login autologin');
 
     // Retrieve email and password from wherever you store them (e.g., localStorage)
-    const email = 'global_user@vqueen.com';
-    const password = 'global_user2023';
+    const {email, password} = environment.credentials;
 
     // Make API call to log in the user
     this.authService.login(email, password).subscribe({
