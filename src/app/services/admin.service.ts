@@ -10,18 +10,20 @@ import { AuthService } from './auth.service';
 })
 export class AdminService {
   private apiUrl = 'http://localhost:8080';
-  private authToken = this.authService.accessToken;
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.authToken}`
-    })
-  };
 
   constructor(
     private http: HttpClient,
     private authService: AuthService,
   ) { }
+
+  private get httpOptions(): { headers: HttpHeaders } {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.authService.accessToken}`
+      })
+    };
+  }
 
   getMenus(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.apiUrl}/products`,
@@ -55,20 +57,23 @@ export class AdminService {
   }
 
   getUsers(): Observable<User[]> {
+    console.log('In AdminS this.accessToken:', this.authService.accessToken);
+    console.log('httpOptions: ', this.httpOptions);
+    
     return this.http.get<User[]>(`${this.apiUrl}/users`,
-    this.httpOptions,);
+    this.httpOptions);
   }
 
   getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/users/${id}`,
-    this.httpOptions,)
+    this.httpOptions)
   }
 
   addUser(id: number, email: string, password:string, role:string): Observable<User> {
     return this.http.post<User>(
       `${this.apiUrl}/users`,
       {id, email, password, role},
-      this.httpOptions,
+      this.httpOptions
     );
   }
 
@@ -76,19 +81,15 @@ export class AdminService {
     return this.http.patch<User>(
       `${this.apiUrl}/users/${id}`,
       {id, email, password, role},
-      this.httpOptions,
+      this.httpOptions
     );
   }
 
 
   deleteUser(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/users/${id}`,
-    this.httpOptions,)
+    this.httpOptions)
   }
-
-  // getOrdersForEmployees(): Observable<Product[]> {
-  //   return this.http.get<Product[]> ('/api/employees/12345/orders')
-  // }
 
 
 }
