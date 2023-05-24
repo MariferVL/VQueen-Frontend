@@ -1,4 +1,4 @@
-<section id="employeeLogin" *ngIf="!isLoggedIn()">
+<section id="employeeLogin" *ngIf="!isLoggedIn">
   <form (ngSubmit)="login()">
     <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
     <input type="password" [(ngModel)]="password" name="password" placeholder="Password" [type]="showPassword ? 'text' : 'password'" required>
@@ -9,7 +9,7 @@
   </form>
 </section>
 
-<section *ngIf="isLoggedIn() && userRole !== 'client'">
+<section *ngIf="isLoggedIn && userRole !== 'client'">
   <h2>Welcome!</h2>
   <h5></h5>
   <a routerLink="/colab/take-order" class="btn">Take Order</a>
