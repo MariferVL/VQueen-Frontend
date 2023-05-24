@@ -4,8 +4,8 @@
       <img [src]="logoImg" alt="Restaurant Logo" class="logo">
     </header>
     <div class="buttons">
-      <a routerLink="/menu" class="btn">Full Menu</a>
-      <a routerLink="/menu" class="btn">Detailed Menu</a>
+      <a (click)="autoLogin()" class="btn">Full Menu</a>
+      <a (click)="autoLogin()" class="btn">Detailed Menu</a>
       <a routerLink="/colab" class="btn">Employee Login</a>
     </div>
   </section>
