@@ -41,10 +41,6 @@ export class LoginComponent {
             this.userRole = this.authService.getUserRole();
             this.userID = user.id;
 
-            console.log('this.userRole: ', this.userRole);
-            console.log('this.userID: ', this.userID);
-
-
           } else {
             console.log('User not found.');
           }
@@ -58,7 +54,6 @@ export class LoginComponent {
 
 
   autoLogin(): void {
-    console.log('entró a Login autologin');
 
     // Retrieve email and password from wherever you store them (e.g., localStorage)
     const {email, password} = environment.credentials;
@@ -67,7 +62,6 @@ export class LoginComponent {
     this.authService.login(email, password).subscribe({
       next: (response: any) => {
         this.authService.accessToken = response.accessToken;
-        console.log('autologin this.authService.accessToken: ', this.authService.accessToken);
 
         // Store the token securely.
         localStorage.setItem('accessToken', this.authService.accessToken);
