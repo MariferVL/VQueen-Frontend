@@ -1,4 +1,4 @@
-<section id="mainAdmin" *ngIf="isLoggedIn()">
+<section id="mainAdmin" *ngIf="isLoggedIn() && userRole !== 'admin'">
     <router-outlet>
         <h2>Welcome, VG Manager</h2>
 
