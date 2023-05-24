@@ -7,14 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private apiUrl = 'http://localhost:8080';
-  accessToken: undefined;
+  accessToken: string = '';
   
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<any> {
-    console.log(email + ' ' + password);
     const postData = { email, password };
-
     return this.http.post(`${this.apiUrl}/login`, postData);
   }
+
+  
 }
