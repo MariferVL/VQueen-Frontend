@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from '../services/admin.service';
+import { OrderService } from '../services/order.service';
 import { Product } from '../types';
 import { Title } from '@angular/platform-browser';
 
@@ -25,6 +26,7 @@ export class DetailedMenuComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private adminService: AdminService,
+    private orderService: OrderService,
     private titleService: Title,
     ) { }
 
@@ -40,4 +42,9 @@ export class DetailedMenuComponent implements OnInit {
     });
   
   }
+
+  selectProduct(product: Product): void {
+    this.orderService.addSelectedProduct(product);
+  }
+
 }

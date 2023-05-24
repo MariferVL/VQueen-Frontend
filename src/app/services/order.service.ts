@@ -16,20 +16,39 @@ export class OrderService {
       'Authorization': `Bearer ${this.authToken}`
     })
   };
+  selectedProducts: Product[] = [];
+
 
   constructor(
     private http: HttpClient,
     private authService: AuthService,
   ) { }
 
-  addOrder(client: string, products: Product[], status:string, dateEntry: string ): Observable<Order> {
+  /**
+ * Add the selected product to the array
+ * @param product object
+ */
+  addSelectedProduct(product: Product): void {
+    this.selectedProducts.push(product);
+  }
+
+  /**
+   * Get all the products selected and return it as an array.
+   * @returns array
+   */
+  getSelectedProducts(): Product[] {
+    return this.selectedProducts;
+  }
+
+  addOrder(client: string, products: Product[], status: string, dateEntry: string): Observable<Order> {
     return this.http.post<Order>(
       `${this.apiUrl}/orders`,
-      {client, products, status, dateEntry },
+      { client, products, status, dateEntry },
       this.httpOptions,
     );
   }
 
-  
+
+
 
 }
