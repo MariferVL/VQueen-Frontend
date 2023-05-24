@@ -67,7 +67,9 @@ import { ColabOrdersComponent } from './colab-orders/colab-orders.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    LoginComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
