@@ -22,7 +22,7 @@ export class AddEmployeeComponent implements OnInit{
     { id: number, email: string,  password: string, role: string }): void {
     this.adminService.addUser(id, email, password, role)
       .subscribe(() => {
-        window.location.href = '/admin/menu';
+        window.location.href = '/admin/member';
         console.log('Adding a new member.👑');
       });
   }
