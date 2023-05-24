@@ -22,7 +22,7 @@ export class ManagerComponent {
   }
 
   isLoggedIn(): boolean {
-    this.userRole = this.login.userRole;
+    this.userRole = this.authService.getUserRole();    
     return !!this.authService.accessToken;
   }
   

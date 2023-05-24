@@ -57,9 +57,6 @@ export class AdminService {
   }
 
   getUsers(): Observable<User[]> {
-    console.log('In AdminS this.accessToken:', this.authService.accessToken);
-    console.log('httpOptions: ', this.httpOptions);
-    
     return this.http.get<User[]>(`${this.apiUrl}/users`,
     this.httpOptions);
   }
