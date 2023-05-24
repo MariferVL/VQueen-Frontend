@@ -1,0 +1,19 @@
+<section id="mainAdmin" *ngIf="isLoggedIn()&& userRole === 'admin'">
+    <router-outlet>
+        <h2>{{title}}</h2>
+
+        <div>
+            <a routerLink="/admin/menu" class="btn">Administrate Menu</a>
+            <a routerLink="/admin/member" class="btn">Administrate Employees</a>
+        </div>
+    </router-outlet>
+</section>
+<button (click)="logout()">LogOut</button>
+
+<section id="loginAdmin" *ngIf="!isLoggedIn()">
+    <header>
+        <h2>Admin V Queen</h2>
+    </header>
+    <app-login></app-login>
+
+</section>

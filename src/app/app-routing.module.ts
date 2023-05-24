@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { MenuComponent } from './menu/menu.component';
-import { DetailedMenuComponent } from './detailed-menu/detailed-menu.component';
-import { DetailedOrderComponent } from './detailed-order/detailed-order.component';
-import { KitchenComponent } from './kitchen/kitchen.component';
-import { ReadyComponent } from './ready/ready.component';
-import { LocationsComponent } from './locations/locations.component';
-import { OrderReceivedComponent } from './order-received/order-received.component';
-import { ManagerComponent } from './manager/manager.component';
-import { EmployeesAdminComponent } from './employees-admin/employees-admin.component';
-import { MenuAdminComponent } from './menu-admin/menu-admin.component';
-import { EditMenuComponent } from './edit-menu/edit-menu.component';
-import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
-import { AddEmployeeComponent } from './add-employee/add-employee.component';
-import { AddProductComponent } from './add-product/add-product.component';
-import { LoginComponent } from './login/login.component';
-import { ColabOrdersComponent } from './colab-orders/colab-orders.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './components/home/home.component';
+import { MenuComponent } from './components/menu/menu/menu.component';
+import { DetailedMenuComponent } from './components/menu/detailed-menu/detailed-menu.component';
+import { DetailedOrderComponent } from './components/order/detailed-order/detailed-order.component';
+import { KitchenComponent } from './components/kitchen/kitchen/kitchen.component';
+import { ReadyComponent } from './components/kitchen/ready/ready.component';
+import { LocationsComponent } from './components/extras/locations/locations.component';
+import { OrderReceivedComponent } from './components/order/order-received/order-received.component';
+import { ManagerComponent } from './components/admin/manager/manager.component';
+import { EmployeesAdminComponent } from './components/admin/employees-admin/employees-admin.component';
+import { MenuAdminComponent } from './components/admin/menu-admin/menu-admin.component';
+import { EditMenuComponent } from './components/admin/edit-menu/edit-menu.component';
+import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component';
+import { AddEmployeeComponent } from './components/admin/add-employee/add-employee.component';
+import { AddProductComponent } from './components/admin/add-product/add-product.component';
+import { LoginComponent } from './components/colab/login/login.component';
+import { ColabOrdersComponent } from './components/colab/colab-orders/colab-orders.component';
+import { NotFoundComponent } from './components/extras/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
