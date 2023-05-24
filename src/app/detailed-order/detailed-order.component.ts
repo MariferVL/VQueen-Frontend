@@ -38,7 +38,10 @@ export class DetailedOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleService.setTitle('VQ - Order Detail');
+    //FIXME: Id no funcionando  
     const id = Number(this.route.snapshot.paramMap.get('id'));
+    console.log('id en order: ', id); // id = 0
+    
     this.adminService.getMenusById(id)
     .subscribe(menu => {
       this.menu = menu;
@@ -49,8 +52,6 @@ export class DetailedOrderComponent implements OnInit {
   }
 
   checkCustomerName(): void {
-    console.log('entró a checkCustomerName');
-
     const storedName = localStorage.getItem('customerName');
     if (storedName) {
       console.log('entró a if');
