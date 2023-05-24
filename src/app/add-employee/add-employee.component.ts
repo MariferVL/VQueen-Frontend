@@ -20,7 +20,7 @@ export class AddEmployeeComponent implements OnInit{
 
   onSubmit({ id, email, password, role }:
     { id: number, email: string,  password: string, role: string }): void {
-    this.adminService.addEmployee(id, email, password, role)
+    this.adminService.addUser(id, email, password, role)
       .subscribe(() => {
         window.location.href = '/admin/menu';
         console.log('Adding a new member.👑');
