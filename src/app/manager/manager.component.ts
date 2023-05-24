@@ -27,7 +27,7 @@ export class ManagerComponent {
   }
   
   logout(): void {
-    this.authService.accessToken = '';
+    this.login.logout();
   }
 }
 
