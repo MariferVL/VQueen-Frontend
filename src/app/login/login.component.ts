@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'; import { AuthService } from '../services/auth.service';
 import { User } from '../types';
 import { AdminService } from '../services/admin.service';
-import { environment } from 'environments/environment';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -58,7 +58,7 @@ export class LoginComponent {
 
     // Retrieve email and password from wherever you store them (e.g., localStorage)
     const {email, password} = environment.credentials;
-
+    
     // Make API call to log in the user
     this.authService.login(email, password).subscribe({
       next: (response: any) => {
