@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
 
 import { UsernameModalComponent } from '../../modals/username-modal/username-modal.component';
 import { OrderModalComponent } from '../../modals/order-modal/order-modal.component';
@@ -17,7 +18,7 @@ import { OrderService } from '../../../services/order.service';
 })
 
 
-export class DetailedOrderComponent implements OnInit {
+export class DetailedOrderComponent implements OnInit, OnDestroy {
   isLoading: boolean = true;
   customerName: string = '';
   message: string = '';
@@ -26,6 +27,7 @@ export class DetailedOrderComponent implements OnInit {
   orderNum: string = '';
   status: string= '';
   selectedProducts: Product[] = [];
+  private subscription: Subscription = new Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,6 +51,12 @@ export class DetailedOrderComponent implements OnInit {
     })
     this.checkCustomerName();
     this.selectedProducts = this.orderService.getSelectedProducts();
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   checkCustomerName(): void {
