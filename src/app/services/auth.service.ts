@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ export class AuthService {
   private apiUrl = 'http://localhost:8080';
   accessToken: string = '';
   private userRole: string = '';
+  userRoleChanged: EventEmitter<string> = new EventEmitter<string>();
+  subscription: any;
 
   constructor(private http: HttpClient) { }
 
@@ -16,14 +19,38 @@ export class AuthService {
     const postData = { email, password };
     return this.http.post(`${this.apiUrl}/login`, postData);
   }
-  
 
-  setUserRole(userRole: string): void {
-    this.userRole = userRole;
+  //TODO: PREGUNTA: Esto está bien acá??
+  autoLogin(): void {
+    const { email, password } = environment.credentials;
+
+    this.subscription = this.login(email, password).subscribe({
+      next: (response: any) => {
+        this.accessToken = response.accessToken;
+
+        localStorage.setItem('accessToken', this.accessToken);
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    });
+  }
+  
+  setUserRole(userRole: string): Promise<void> {
+    return new Promise<void>((resolve) => {
+      this.userRole = userRole;
+      this.userRoleChanged.emit(userRole); // Emit the user role
+      resolve();
+    });
   }
 
-  getUserRole(): string {
-    return this.userRole;
+  getUserRole(): Observable<string> {
+    return this.userRoleChanged.asObservable();
   }
   
+
+  logout(): void {
+    this.accessToken = '';
+    localStorage.removeItem('accessToken');
+  }
 }
