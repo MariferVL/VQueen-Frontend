@@ -25,6 +25,6 @@ export class HomeComponent {
   //        la primera vez que se invoca este método.
   autoLogin() {
     this.authService.autoLogin();
-    this.router.navigateByUrl('/menu');
+    this.router.navigateByUrl('/vq-menu');
   }
 }

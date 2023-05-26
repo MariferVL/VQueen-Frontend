@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AdminService } from '../../../services/admin.service';
 import { Subscription } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-employee',
@@ -10,14 +11,21 @@ import { Subscription } from 'rxjs';
 })
 export class AddEmployeeComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription;
-
+  currentUrl: string = '';
+  
   constructor(
     private titleService: Title,
     private adminService: AdminService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.titleService.setTitle('VQAdmin - Add Member');
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentUrl = this.router.url;
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -30,7 +38,7 @@ export class AddEmployeeComponent implements OnInit, OnDestroy {
     { id: number, email: string,  password: string, role: string }): void {
     this.subscription = this.adminService.addUser(id, email, password, role)
       .subscribe(() => {
-        window.location.href = '/member';
+        this.router.navigate(['/member']);
         console.log('Adding a new member.👑');
       });
   }
