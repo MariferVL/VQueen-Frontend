@@ -41,7 +41,7 @@ export class EditEmployeeComponent implements OnInit, OnDestroy {
         .subscribe(() => {
           console.log('Saving changes');
           //FIXME: cambiar a version de Luana
-          window.location.href = '/admin/member';
+          window.location.href = '/member';
         });
     }
   }

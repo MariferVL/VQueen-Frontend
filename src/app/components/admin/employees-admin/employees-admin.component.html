@@ -1,5 +1,5 @@
 <h2>Employees Management</h2>
-<a routerLink="/admin/member/add-member">
+<a routerLink="/member/add-member">
   <button>Add New Member</button>
 </a>
 <router-outlet></router-outlet>
@@ -15,7 +15,7 @@
   <p>Password: £{{ employee.password }}</p>
   <p>Role: {{employee.role}}</p>
   <div class="buttons-container">
-    <a routerLink="/admin/member/edit/{{employee.id}}">Edit</a>
+    <a routerLink="/member/edit/{{employee.id}}">Edit</a>
 
     <button (click)="onDeleteClicked(employee.id)">Delete</button>
   </div>

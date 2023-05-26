@@ -30,7 +30,7 @@ export class AddEmployeeComponent implements OnInit, OnDestroy {
     { id: number, email: string,  password: string, role: string }): void {
     this.subscription = this.adminService.addUser(id, email, password, role)
       .subscribe(() => {
-        window.location.href = '/admin/member';
+        window.location.href = '/member';
         console.log('Adding a new member.👑');
       });
   }

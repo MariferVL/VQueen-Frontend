@@ -22,7 +22,7 @@ export class AddProductComponent implements OnInit {
     { id: number, name: string, price: number, image: string, type: string, dateEntry: string }): void {
     this.adminService.createMenu(id, name, price, image, type, dateEntry )
       .subscribe(() => {
-        window.location.href = '/admin/menu';
+        window.location.href = '/menu';
         console.log('Creating a new delicacy.👑');
       });
   }

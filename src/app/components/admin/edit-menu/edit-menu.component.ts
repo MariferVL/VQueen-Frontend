@@ -35,7 +35,7 @@ export class EditMenuComponent implements OnInit {
         .subscribe(() => {
           console.log('Saving changes');  
           //TODO: PREGUNTA: Esto es apropiado? Porque funciona😅       
-          window.location.href = '/admin/menu';
+          window.location.href = '/menu';
         });
     }
   }
