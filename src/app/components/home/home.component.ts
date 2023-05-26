@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { LoginComponent } from '../colab/login/login.component';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,15 +14,17 @@ export class HomeComponent {
   constructor(
     private router: Router,
     private titleService: Title,
-    private login: LoginComponent
+    private authService: AuthService
     ) {}
 
   ngOnInit() {
     this.titleService.setTitle('VQ - Home');
   }
 
+  //TODO: PREGUNTA: Creo que hay una dessincronización 
+  //        la primera vez que se invoca este método.
   autoLogin() {
-    this.login.autoLogin();
+    this.authService.autoLogin();
     this.router.navigateByUrl('/menu');
   }
 }

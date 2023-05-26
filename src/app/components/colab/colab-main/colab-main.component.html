@@ -1,0 +1,13 @@
+<section id="employeeLogin" *ngIf="!isLoggedIn">
+  <app-login-form (loginSubmit)="onLoginSubmit($event)"></app-login-form>
+
+</section>
+
+<section *ngIf="isLoggedIn && userRole === 'colab'">
+  <h2>Welcome!</h2>
+  <h5></h5>
+  <a routerLink="/colab/take-order" class="btn">Take Order</a>
+  <a routerLink="/colab/my-orders" class="btn">Check My Orders</a>
+  <router-outlet></router-outlet>
+</section>
+<button (click)="logout()">LogOut</button>

@@ -27,10 +27,12 @@ import { NotFoundComponent } from './components/extras/not-found/not-found.compo
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { MenuFormComponent } from './components/forms/menu-form/menu-form.component';
 import { NavBarComponent } from './components/extras/nav-bar/nav-bar.component';
-import { LoginComponent } from './components/colab/login/login.component';
+import { ColabMainComponent } from './components/colab/colab-main/colab-main.component';
 import { AddEmployeeComponent } from './components/admin/add-employee/add-employee.component';
 import { EmployeeFormComponent } from './components/forms/employee-form/employee-form.component';
 import { ColabOrdersComponent } from './components/colab/colab-orders/colab-orders.component';
+import { AuthService } from './services/auth.service';
+import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -55,10 +57,11 @@ import { ColabOrdersComponent } from './components/colab/colab-orders/colab-orde
     AddProductComponent,
     MenuFormComponent,
     NavBarComponent,
-    LoginComponent,
+    ColabMainComponent,
     AddEmployeeComponent,
     EmployeeFormComponent,
     ColabOrdersComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,7 @@ import { ColabOrdersComponent } from './components/colab/colab-orders/colab-orde
     HttpClientModule
   ],
   providers: [
-    LoginComponent
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

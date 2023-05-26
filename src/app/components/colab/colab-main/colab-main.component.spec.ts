@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginComponent } from './login.component';
+import { ColabMainComponent } from './colab-main.component';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('ColabMainComponent', () => {
+  let component: ColabMainComponent;
+  let fixture: ComponentFixture<ColabMainComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent]
+      declarations: [ColabMainComponent]
     });
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(ColabMainComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
