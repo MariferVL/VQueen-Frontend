@@ -29,3 +29,7 @@ export interface Order {
     id: number;
   }
   
+  export interface ProductWithQuantity extends Product {
+    quantity: number;
+  }
+  
