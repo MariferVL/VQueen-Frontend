@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 
 import { UsernameModalComponent } from '../../modals/username-modal/username-modal.component';
 import { OrderModalComponent } from '../../modals/order-modal/order-modal.component';
-import { Product } from '../../../types';
+import { Product, ProductWithQuantity } from '../../../types';
 import { AdminService } from '../../../services/admin.service';
 import { OrderService } from '../../../services/order.service';
 
@@ -25,8 +25,8 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
   menu: Product | undefined;
   orderDate: string = '';
   orderNum: string = '';
-  status: string= '';
-  selectedProducts: Product[] = [];
+  status: string = '';
+  selectedProducts: ProductWithQuantity[] = [];   
   private subscription: Subscription = new Subscription;
 
   constructor(
@@ -40,15 +40,6 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.titleService.setTitle('VQ - Order Detail');
-    //FIXME: Id no funcionando  
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    console.log('id en order: ', id); // id = 0
-    
-    this.adminService.getMenusById(id)
-    .subscribe(menu => {
-      this.menu = menu;
-      this.isLoading = false;
-    })
     this.checkCustomerName();
     this.selectedProducts = this.orderService.getSelectedProducts();
   }
@@ -59,24 +50,14 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
     }
   }
 
-  checkCustomerName(): void {
-    const storedName = localStorage.getItem('customerName');
-    if (storedName) {
-      console.log('entró a if');
-      
-      this.customerName = storedName;
-    } else {
-      console.log('entró a else');
-
-      this.openModal();
-    }
-  }
-
+/**
+ * 
+ */
   openModal(): void {
     const dialogRef: MatDialogRef<UsernameModalComponent> = this.dialog.open(UsernameModalComponent, {
       width: '500px',
     });
-  
+
     dialogRef.afterClosed().subscribe((result: string) => {
       if (result) {
         this.customerName = result;
@@ -84,11 +65,57 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
       }
     });
   }
-  
+
+  /**
+   * 
+   */
+  checkCustomerName(): void {
+    const storedName = localStorage.getItem('customerName');
+    if (storedName) {
+      console.log('entró a if');
+
+      this.customerName = storedName;
+      console.log('this.customerName: ', this.customerName);
+
+    } else {
+      console.log('entró a else');
+
+      this.openModal();
+    }
+  }
+
+  /**
+   * Increase the quantity of the product at the specified index
+   * in the selectedProducts array by 1.
+   * @param index 
+   */
+  increaseQuantity(index: number): void {
+    this.selectedProducts[index].quantity += 1;
+  }
+
+  /**
+   * Check if the quantity of the product is greater than
+   * 1 before decrementing it by 1
+   * @param index 
+   */
+  decreaseQuantity(index: number): void {
+    if (this.selectedProducts[index].quantity > 1) {
+      this.selectedProducts[index].quantity -= 1;
+    }
+  }
+
+
+/**
+ * Remove product from the order detail.
+ * @param index 
+ */
   removeProduct(index: number): void {
     this.selectedProducts.splice(index, 1); // Remove the selected product from the array
   }
 
+/**
+ * Display the confirmation modal and if the order is confirmed it post it.
+ */
   confirmOrder(): void {
     const confirmRef = this.dialog.open(OrderModalComponent, {
       width: '1100px',
@@ -102,14 +129,15 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
         this.orderDate = this.getCurrentDateTime();
         this.status = 'sended';
         this.message = `Order ${this.orderNum} from ${this.customerName}`;
+        //TODO: Add order
         console.log('msg: ', this.message);
         console.log('this.customerName: ', this.customerName);
         console.log('this.selectedProducts: ', this.selectedProducts);
         console.log('this.status: ', this.status);
-        console.log('this.orderDate: ', this.orderDate);      
+        console.log('this.orderDate: ', this.orderDate);
 
         // Send the selected products to the admin.service for posting the orders
-        this.orderService.addOrder(this.customerName,this.selectedProducts, this.status, this.orderDate).subscribe(() => {
+        this.orderService.addOrder(this.customerName, this.selectedProducts, this.status, this.orderDate).subscribe(() => {
           console.log('Orders posted successfully');
           this.router.navigateByUrl('/order-received');
         });
@@ -122,35 +150,44 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
     return `#VQ${timestamp}`;
   }
 
-
-    /**
-   *  Creates a new Date object representing the current date and time.
+  /**
+   * Helper function that pads single-digit numbers with a leading zero,
+   * ensuring consistent formatting.
+   * @param num 
    * @returns string
    */
-    getCurrentDateTime(): string {
-      const currentDate = new Date();
-    
-      const year = currentDate.getFullYear();
-      const month = this.padZero(currentDate.getMonth() + 1);
-      const day = this.padZero(currentDate.getDate());
-      const hour = this.padZero(currentDate.getHours());
-      const minute = this.padZero(currentDate.getMinutes());
-      const second = this.padZero(currentDate.getSeconds());
-    
-      return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
-    }
-  
-  
-    /**
-     * Helper function that pads single-digit numbers with a leading zero,
-     * ensuring consistent formatting.
-     * @param num 
-     * @returns string
-     */
-    private padZero(num: number): string {
-      return num < 10 ? `0${num}` : num.toString();
-    }
+  private padZero(num: number): string {
+    return num < 10 ? `0${num}` : num.toString();
+  }
 
+  /**
+ *  Creates a new Date object representing the current date and time.
+ * @returns string
+ */
+  getCurrentDateTime(): string {
+    const currentDate = new Date();
+
+    const year = currentDate.getFullYear();
+    const month = this.padZero(currentDate.getMonth() + 1);
+    const day = this.padZero(currentDate.getDate());
+    const hour = this.padZero(currentDate.getHours());
+    const minute = this.padZero(currentDate.getMinutes());
+    const second = this.padZero(currentDate.getSeconds());
+
+    return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+  }
+
+  calculateTotal(): number {
+    let total = 0;
+    for (const product of this.selectedProducts) {
+      total += product.price * product.quantity;
+    }
+    return total;
+  }
+
+  calculateTip(total: number, tipPercentage: number): number {
+    return total * (tipPercentage / 100);
+  }
 }
 
   //TODO: Show this message while the food is being cooked.
