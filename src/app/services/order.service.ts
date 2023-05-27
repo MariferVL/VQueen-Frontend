@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Order, Product, User } from '../types';
+import { Order, Product, ProductWithQuantity, User } from '../types';
 import { AuthService } from './auth.service';
+ 
 
 @Injectable({
   providedIn: 'root'
@@ -16,27 +17,37 @@ export class OrderService {
       'Authorization': `Bearer ${this.authToken}`
     })
   };
-  selectedProducts: Product[] = [];
-
+  selectedProducts: ProductWithQuantity[] = [];
 
   constructor(
     private http: HttpClient,
     private authService: AuthService,
   ) { }
 
+
   /**
- * Add the selected product to the array
- * @param product object
- */
+   * Add the selected product to the array or increase its quantity if it already exists
+   * @param product object
+   */
   addSelectedProduct(product: Product): void {
-    this.selectedProducts.push(product);
+    const existingProduct = this.selectedProducts.find(p => p.id === product.id);
+    if (existingProduct) {
+      existingProduct.quantity += 1; // Increase the quantity of the existing product
+      console.log('existingProduct: ', existingProduct);
+      
+    } else {
+      const newProduct: ProductWithQuantity = { ...product, quantity: 1 };
+      this.selectedProducts.push(newProduct); // Add the new product to the array
+      console.log('newProduct: ', newProduct);
+      
+    }
   }
 
   /**
-   * Get all the products selected and return it as an array.
+   * Get all the products selected and return them as an array.
    * @returns array
    */
-  getSelectedProducts(): Product[] {
+  getSelectedProducts(): ProductWithQuantity[] {
     return this.selectedProducts;
   }
 
@@ -47,8 +58,5 @@ export class OrderService {
       this.httpOptions,
     );
   }
-
-
-
 
 }
