@@ -119,7 +119,7 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
   confirmOrder(): void {
     const confirmRef = this.dialog.open(OrderModalComponent, {
       width: '1100px',
-      data: this.selectedProducts, // Pass the selected products to the OrderModalComponent
+      data: { products: this.selectedProducts },
     });
 
     //TODO: Pendiente adaptar html para llamar metodo
@@ -145,6 +145,10 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * 
+   * @returns string
+   */
   generateOrderNumber(): string {
     const timestamp = new Date().getTime();
     return `#VQ${timestamp}`;
@@ -188,6 +192,8 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
   calculateTip(total: number, tipPercentage: number): number {
     return total * (tipPercentage / 100);
   }
+
+  //TODO: create functionality to click and delete all the data saved to the order.
 }
 
   //TODO: Show this message while the food is being cooked.
