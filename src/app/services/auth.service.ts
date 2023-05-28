@@ -21,18 +21,23 @@ export class AuthService {
   }
 
   //TODO: PREGUNTA: Esto está bien acá??
-  autoLogin(): void {
+  autoLogin(): Observable<any> {
     const { email, password } = environment.credentials;
 
-    this.subscription = this.login(email, password).subscribe({
-      next: (response: any) => {
-        this.accessToken = response.accessToken;
-
-        localStorage.setItem('accessToken', this.accessToken);
-      },
-      error: (error: any) => {
-        console.error(error);
-      }
+    return new Observable((observer) => {
+      this.subscription = this.login(email, password).subscribe({
+        next: (response: any) => {
+          this.accessToken = response.accessToken;
+          localStorage.setItem('accessToken', this.accessToken);
+          observer.next(); // Emit next value to complete the observable
+          observer.complete(); // Complete the observable
+        },
+        error: (error: any) => {
+          console.error(error);
+          observer.error(error); // Emit error value to complete the observable
+          observer.complete(); // Complete the observable
+        }
+      });
     });
   }
   
