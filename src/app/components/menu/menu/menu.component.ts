@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { Product } from '../../../types';
 import { AdminService } from '../../../services/admin.service';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-menu',
@@ -18,6 +19,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   constructor(
     private titleService: Title,
     private adminService: AdminService,
+    private orderService: OrderService,
   ) { }
 
   ngOnInit() {
@@ -28,6 +30,11 @@ export class MenuComponent implements OnInit, OnDestroy {
         this.isLoading = false;
       });
   }
+
+  selectProduct(product: Product): void {
+    this.orderService.addSelectedProduct(product);
+  }
+
 
   ngOnDestroy() {
     if (this.subscription) {

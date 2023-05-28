@@ -11,6 +11,8 @@
         <h4>{{menu.name}}</h4>
         <span>£{{menu.price}}</span>
         <a routerLink="/vq-menu/{{menu.id}}">Zoom It</a>
+        <a routerLink="/order" (click)="selectProduct(menu)">Want It</a>
+
       </li>
     </ul>
 
