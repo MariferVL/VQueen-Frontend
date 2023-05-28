@@ -33,6 +33,8 @@
         <p>Tip (10%): {{ calculateTip(calculateTotal(), 10) | currency }}</p>
         <button routerLink="/vq-menu">Add More Products</button>
         <button (click)="confirmOrder()">Confirm Order</button>
+        <button (click)="cancelOrder()">Delete Order</button>
+
     </article>
 
 </main>

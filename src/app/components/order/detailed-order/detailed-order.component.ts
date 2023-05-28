@@ -26,7 +26,7 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
   orderDate: string = '';
   orderNum: string = '';
   status: string = '';
-  selectedProducts: ProductWithQuantity[] = [];   
+  selectedProducts: ProductWithQuantity[] = [];
   private subscription: Subscription = new Subscription;
 
   constructor(
@@ -50,9 +50,9 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
     }
   }
 
-/**
- * 
- */
+  /**
+   * 
+   */
   openModal(): void {
     const dialogRef: MatDialogRef<UsernameModalComponent> = this.dialog.open(UsernameModalComponent, {
       width: '500px',
@@ -105,45 +105,15 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
   }
 
 
-/**
- * Remove product from the order detail.
- * @param index 
- */
+  /**
+   * Remove product from the order detail.
+   * @param index 
+   */
   removeProduct(index: number): void {
     this.selectedProducts.splice(index, 1); // Remove the selected product from the array
   }
 
-/**
- * Display the confirmation modal and if the order is confirmed it post it.
- */
-  confirmOrder(): void {
-    const confirmRef = this.dialog.open(OrderModalComponent, {
-      width: '1100px',
-      data: { products: this.selectedProducts },
-    });
-
-    //TODO: Pendiente adaptar html para llamar metodo
-    confirmRef.afterClosed().subscribe((result) => {
-      if (result === 'confirm') {
-        this.orderNum = this.generateOrderNumber();
-        this.orderDate = this.getCurrentDateTime();
-        this.status = 'sended';
-        this.message = `Order ${this.orderNum} from ${this.customerName}`;
-        //TODO: Add order
-        console.log('msg: ', this.message);
-        console.log('this.customerName: ', this.customerName);
-        console.log('this.selectedProducts: ', this.selectedProducts);
-        console.log('this.status: ', this.status);
-        console.log('this.orderDate: ', this.orderDate);
-
-        // Send the selected products to the admin.service for posting the orders
-        this.orderService.addOrder(this.customerName, this.selectedProducts, this.status, this.orderDate).subscribe(() => {
-          console.log('Orders posted successfully');
-          this.router.navigateByUrl('/order-received');
-        });
-      }
-    });
-  }
+  
 
   /**
    * 
@@ -191,9 +161,51 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
 
   calculateTip(total: number, tipPercentage: number): number {
     return total * (tipPercentage / 100);
+    
   }
 
-  //TODO: create functionality to click and delete all the data saved to the order.
+  /**
+   * Display the confirmation modal and if the order is confirmed it post it.
+   */
+  confirmOrder(): void {
+    const confirmRef = this.dialog.open(OrderModalComponent, {
+      width: '1100px',
+      data: { products: this.selectedProducts },
+    });
+
+    //TODO: Pendiente adaptar html para llamar metodo
+    confirmRef.afterClosed().subscribe((result) => {
+      if (result === 'confirm') {
+        this.orderNum = this.generateOrderNumber();
+        this.orderDate = this.getCurrentDateTime();
+        this.status = 'sended';
+        this.message = `Order ${this.orderNum} from ${this.customerName}`;
+
+        console.log('msg: ', this.message);
+        console.log('this.customerName: ', this.customerName);
+        console.log('this.selectedProducts: ', this.selectedProducts);
+        console.log('this.status: ', this.status);
+        console.log('this.orderDate: ', this.orderDate);
+
+        // Send the selected products to the admin.service for posting the orders
+        this.orderService.addOrder(this.customerName, this.selectedProducts, this.status, this.orderDate, this.orderNum).subscribe(() => {
+          console.log('Orders posted successfully');
+          this.orderService.clearOrder();
+          this.router.navigateByUrl('/order-received');
+        });
+      }
+    });
+  }
+
+  /**
+   * Cancel the order and delete the data when the user clicks the option.
+   */
+  cancelOrder() {
+    this.orderService.clearOrder();
+    this.router.navigateByUrl('/order-received');
+  }
+
+
 }
 
   //TODO: Show this message while the food is being cooked.
