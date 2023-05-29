@@ -29,11 +29,9 @@ export class HomeComponent {
     }
   }
 
-    //TODO: PREGUNTA: Creo que hay una dessincronización 
-  //        la primera vez que se invoca este método.
-  /**
-   * returns an observable
-   */
+  //TODO: PREGUNTA: Creo que hay una dessincronización 
+  //la primera vez que se invoca este método.
+
   autoLogin(): void {
     this.autoLoginSubs = this.authService.autoLogin().subscribe({
       next: () => {

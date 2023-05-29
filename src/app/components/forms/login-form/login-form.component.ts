@@ -41,15 +41,12 @@ async login(): Promise<void> {
 
     const users: User[] = await firstValueFrom(this.adminService.getUsers());
     const user = users.find((user) => user.email === this.email);
-    console.log('user: ', user);
 
     if (user) {
       this.authService.setUserRole(user.role);
       this.authService.getUserRole().subscribe((userRole: string) => {
         this.userRole = userRole;
-        console.log('Colab this.userRole: ', this.userRole);
       });
-      console.log('LOGIN this.userRole: ', this.userRole);
 
       this.userID = user.id;
     } else {

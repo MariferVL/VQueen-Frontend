@@ -1,9 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { User } from '../../../types';
 import { AuthService } from '../../../services/auth.service';
-import { AdminService } from '../../../services/admin.service';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -45,10 +42,6 @@ export class ColabMainComponent implements OnInit, OnDestroy {
     });
   }
 
-  onLoginSubmit(data: any): void {
-    console.log('Colab Login form submitted:', data);
-    console.log('this.authService.getUserRole(): ', this.userRole);
-  }
 
   get isLoggedIn(): boolean {
     return !!this.authService.accessToken;
