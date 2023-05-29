@@ -20,7 +20,6 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, postData);
   }
 
-  //TODO: PREGUNTA: Esto está bien acá??
   autoLogin(): Observable<any> {
     const { email, password } = environment.credentials;
 
