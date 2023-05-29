@@ -134,11 +134,11 @@ export class OrderService {
    * @param dateProcessed 
    * @returns http response
    */
-  editOrder(status: string, dateEntry: string): Observable<Order> {
+  editOrder(id: number, status: string, dateEntry: string): Observable<Order> {
     console.log('in edition: ', status, ' and ',dateEntry );
     
     return this.http.patch<Order>(
-      `${this.apiUrl}/orders`,
+      `${this.apiUrl}/orders/${id}`,
       { status, dateEntry },
       this.httpOptions,
     );
