@@ -34,7 +34,7 @@ export class EditMenuComponent implements OnInit {
         dateEntry)
         .subscribe(() => {
           console.log('Saving changes');  
-          //TODO: PREGUNTA: Esto es apropiado? Porque funciona😅       
+          //TODO: Modificar       
           window.location.href = '/menu';
         });
     }
