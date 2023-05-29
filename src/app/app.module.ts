@@ -13,7 +13,6 @@ import { MenuComponent } from './components/menu/menu/menu.component';
 import { DetailedMenuComponent } from './components/menu/detailed-menu/detailed-menu.component';
 import { DetailedOrderComponent } from './components/order/detailed-order/detailed-order.component';
 import { KitchenComponent } from './components/kitchen/kitchen/kitchen.component';
-import { ReadyComponent } from './components/kitchen/ready/ready.component';
 import { LocationsComponent } from './components/extras/locations/locations.component';
 import { ContactComponent } from './components/extras/contact/contact.component';
 import { UsernameModalComponent } from './components/modals/username-modal/username-modal.component';
@@ -34,35 +33,37 @@ import { EmployeeFormComponent } from './components/forms/employee-form/employee
 import { ColabOrdersComponent } from './components/colab/colab-orders/colab-orders.component';
 import { AuthService } from './services/auth.service';
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
+import { ReadyToServeComponent } from './components/kitchen/ready-to-serve/ready-to-serve.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    MenuComponent,
+    AddEmployeeComponent,
+    AddProductComponent,
+    ContactComponent,   
+    ColabMainComponent,
+    ColabOrdersComponent,
     DetailedMenuComponent,
     DetailedOrderComponent,
-    KitchenComponent,
-    ReadyComponent,
-    LocationsComponent,
-    ContactComponent,
-    UsernameModalComponent,
-    OrderModalComponent,
-    OrderReceivedComponent,
+    EditEmployeeComponent,
     EditMenuComponent,
+    EmployeeFormComponent,
+    EmployeesAdminComponent,
+    HomeComponent,
+    KitchenComponent,
+    LocationsComponent,
+    LoginFormComponent,
     ManagerComponent,
     MenuAdminComponent,
-    EmployeesAdminComponent,
-    EditEmployeeComponent,
-    NotFoundComponent,
-    AddProductComponent,
+    MenuComponent, 
     MenuFormComponent,
     NavBarComponent,
-    ColabMainComponent,
-    AddEmployeeComponent,
-    EmployeeFormComponent,
-    ColabOrdersComponent,
-    LoginFormComponent,
+    NotFoundComponent,
+    OrderModalComponent,
+    OrderReceivedComponent,
+    ReadyToServeComponent,
+    UsernameModalComponent,
+ 
   ],
   imports: [
     BrowserModule,

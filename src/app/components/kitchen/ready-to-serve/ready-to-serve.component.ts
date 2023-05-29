@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-ready',
-  templateUrl: './ready.component.html',
-  styleUrls: ['./ready.component.css']
+  selector: 'app-ready-to-serve',
+  templateUrl: './ready-to-serve.component.html',
+  styleUrls: ['./ready-to-serve.component.css']
 })
-export class ReadyComponent {
+export class ReadyToServeComponent {
   constructor(
     private titleService: Title
     ) {}
