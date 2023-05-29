@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 
 import { UsernameModalComponent } from '../../modals/username-modal/username-modal.component';
 import { OrderModalComponent } from '../../modals/order-modal/order-modal.component';
-import { Product, ProductWithQuantity } from '../../../types';
+import { Product, ProductWithQty } from '../../../types';
 import { AdminService } from '../../../services/admin.service';
 import { OrderService } from '../../../services/order.service';
 
@@ -26,7 +26,7 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
   orderDate: string = '';
   orderNum: string = '';
   status: string = '';
-  selectedProducts: ProductWithQuantity[] = [];
+  selectedProducts: ProductWithQty[] = [];
   private subscription: Subscription = new Subscription;
 
   constructor(
@@ -89,8 +89,8 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
    * in the selectedProducts array by 1.
    * @param index 
    */
-  increaseQuantity(index: number): void {
-    this.selectedProducts[index].quantity += 1;
+  increaseQty(index: number): void {
+    this.selectedProducts[index].qty += 1;
   }
 
   /**
@@ -98,9 +98,9 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
    * 1 before decrementing it by 1
    * @param index 
    */
-  decreaseQuantity(index: number): void {
-    if (this.selectedProducts[index].quantity > 1) {
-      this.selectedProducts[index].quantity -= 1;
+  decreaseQty(index: number): void {
+    if (this.selectedProducts[index].qty > 1) {
+      this.selectedProducts[index].qty -= 1;
     }
   }
 
@@ -154,7 +154,7 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
   calculateTotal(): number {
     let total = 0;
     for (const product of this.selectedProducts) {
-      total += product.price * product.quantity;
+      total += product.price * product.qty;
     }
     return total;
   }

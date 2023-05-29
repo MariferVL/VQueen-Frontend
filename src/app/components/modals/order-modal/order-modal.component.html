@@ -15,7 +15,7 @@
         <!-- Display each meal in the order -->
         <tr *ngFor="let product of products" class="meal-item">
           <td>{{ product.name }}</td>
-          <td>{{ product.quantity }}</td>
+          <td>{{ product.qty }}</td>
           <td>${{ calculateTotal(product) }}</td>
         </tr>
       </tbody>

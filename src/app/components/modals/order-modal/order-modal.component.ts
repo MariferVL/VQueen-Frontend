@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Product, ProductWithQuantity } from 'src/app/types';
+import { Product, ProductWithQty } from 'src/app/types';
 
 @Component({
   selector: 'app-order-modal',
@@ -8,12 +8,12 @@ import { Product, ProductWithQuantity } from 'src/app/types';
   styleUrls: ['./order-modal.component.css']
 })
 export class OrderModalComponent {
-  products: ProductWithQuantity[] = [];
+  products: ProductWithQty[] = [];
   tip: number = 10;
 
   constructor(
     public confirmRef: MatDialogRef<OrderModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { products: ProductWithQuantity[] }
+    @Inject(MAT_DIALOG_DATA) public data: { products: ProductWithQty[] }
     ) {
       this.products = data.products;
     }
@@ -34,8 +34,8 @@ export class OrderModalComponent {
    * @param product 
    * @returns int
    */
-  calculateTotal(product: ProductWithQuantity): number {
-    return product.quantity * product.price;
+  calculateTotal(product: ProductWithQty): number {
+    return product.qty * product.price;
   }
 
   /**

@@ -17,12 +17,12 @@
             <tr *ngFor="let product of selectedProducts; let i = index">
                 <td>{{ product.name }}</td>
                 <td>{{ product.price | currency }}</td>
-                <td><div class="product-quantity">
-                    <button mat-icon-button (click)="increaseQuantity(i)">
+                <td><div class="product-qty">
+                    <button mat-icon-button (click)="increaseQty(i)">
                         <mat-icon>+</mat-icon>
                       </button>
-                    <!-- <input type="number" [value]="product.quantity" [(ngModel)]="product.quantity" min="1" step="1"> -->
-                    <button mat-icon-button (click)="decreaseQuantity(i)">
+                    <input type="number" [value]="product.qty" [(ngModel)]="product.qty" min="1" step="1">
+                    <button mat-icon-button (click)="decreaseQty(i)">
                         <mat-icon>-</mat-icon>
                       </button>
                   </div></td>
@@ -66,7 +66,7 @@
         <thead>
             <tr>
                 <th>Product</th>
-                <th>Quantity</th>
+                <th>Qty</th>
                 <th>Price</th>
             </tr>
         </thead>

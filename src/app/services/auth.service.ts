@@ -29,32 +29,45 @@ export class AuthService {
         next: (response: any) => {
           this.accessToken = response.accessToken;
           localStorage.setItem('accessToken', this.accessToken);
-          observer.next(); // Emit next value to complete the observable
-          observer.complete(); // Complete the observable
+          // Emit next value to complete the observable
+          observer.next(); 
+          observer.complete(); 
         },
         error: (error: any) => {
           console.error(error);
-          observer.error(error); // Emit error value to complete the observable
-          observer.complete(); // Complete the observable
+          // Emit error value to complete the observable
+          observer.error(error); 
+          observer.complete(); 
         }
       });
     });
   }
-  
+
+  /**
+   * Set and emit the user role.
+   * @param userRole 
+   * @returns promise 
+   */
   setUserRole(userRole: string): Promise<void> {
     return new Promise<void>((resolve) => {
       this.userRole = userRole;
-      this.userRoleChanged.emit(userRole); // Emit the user role
+      this.userRoleChanged.emit(userRole); 
       resolve();
     });
   }
 
+  /**
+   * Get the userRole value
+   * @returns userRole as a Observable
+   */
   getUserRole(): Observable<string> {
     return this.userRoleChanged.asObservable();
   }
   
-
-  logout(): void {
+  /**
+   * Log out ending session and removing acces token from local storage.
+   */
+  logout(): void {   
     this.accessToken = '';
     localStorage.removeItem('accessToken');
   }
