@@ -178,7 +178,7 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
       if (result === 'confirm') {
         this.orderNum = this.generateOrderNumber();
         this.orderDate = this.getCurrentDateTime();
-        this.status = 'sended';
+        this.status = 'sent';
         this.message = `Order ${this.orderNum} from ${this.customerName}`;
 
         console.log('msg: ', this.message);

@@ -8,14 +8,15 @@ import { Order } from 'src/app/types';
 @Component({
   selector: 'app-kitchen',
   templateUrl: './kitchen.component.html',
-  styleUrls: ['./kitchen.component.css']
+  styleUrls: ['./kitchen.component.css'],
+
 })
 export class KitchenComponent implements OnInit {
   orders: Order[] = [];
+  filteredOrders: Order[] = [];
   waitingOrdersCount: number = 0;
   userRole: string = '';
-  private subscription: Subscription | undefined;
-
+  private subscription: any;
 
   constructor(
     private titleService: Title,
@@ -39,15 +40,17 @@ export class KitchenComponent implements OnInit {
         console.log('Chef this.userRole: ', this.userRole);
 
         this.cdr.detectChanges();
-  
+
         this.getOrders();
       });
     });
 
     // Update waiting orders count every minute
-    setInterval(() => {
-      this.updateWaitingOrdersCount();
-    }, 60000); 
+    this.subscription = setInterval(() => {
+      this.updateWaitingCount();
+      this.filterByStatus();
+      this.getOrders();
+    }, 30000);
   }
 
 
@@ -60,8 +63,8 @@ export class KitchenComponent implements OnInit {
     this.orderService.getOrders().subscribe({
       next: (response: Order[]) => {
         this.orders = response;
-        this.orders.forEach((order) => console.log(order));
-        this.updateWaitingOrdersCount();
+        this.updateWaitingCount();
+        this.filterByStatus();
       },
       error: (error) => {
         console.log('Error fetching orders:', error);
@@ -71,9 +74,25 @@ export class KitchenComponent implements OnInit {
       }
     });
   }
-  
 
-  updateWaitingOrdersCount() {
+  /**
+   * Sort orders by dateEntry in ascending order
+   * @returns array sorted
+   */
+  sortByDate() {
+    return this.orders.sort((a, b) => new Date(a.dateEntry).getTime() - new Date(b.dateEntry).getTime());
+  }
+
+  /**
+   * Filter orders to include only those with status 'sent' or 'cooking'.
+   */
+  filterByStatus() {
+    this.sortByDate();
+    this.filteredOrders = this.orders.filter(order => order.status === 'sent' || order.status === 'cooking');
+  }
+
+
+  updateWaitingCount() {
     this.waitingOrdersCount = this.orders.filter(order => order.status === 'sent').length;
   }
 
@@ -86,10 +105,11 @@ export class KitchenComponent implements OnInit {
       order.status = 'ready';
       order.dateProcessed = this.getCurrentDateTime();
       this.orderService.editOrder(order.status, this.getCurrentDateTime());
-      this.updateWaitingOrdersCount();
+      this.updateWaitingCount();
     }
-
+    this.filterByStatus();
   }
+
 
   getCurrentDateTime(): string {
     const date = new Date();
@@ -102,7 +122,7 @@ export class KitchenComponent implements OnInit {
     return value < 10 ? `0${value}` : `${value}`;
   }
 
-  calculateTimeDifference(entryDate: string): number {
+  calculateTimeDif(entryDate: string): number {
     const entryDateTime = new Date(entryDate);
     const currentTime = new Date();
     const timeDifference = Math.abs(currentTime.getTime() - entryDateTime.getTime());
@@ -110,16 +130,16 @@ export class KitchenComponent implements OnInit {
   }
 
   getOrderColor(entryDate: string, status: string): string {
-    const minutesPassed = this.calculateTimeDifference(entryDate);
-    if (status === 'sent' && minutesPassed >= 1) {
+    const minutesPassed = this.calculateTimeDif(entryDate);
+    if (status === 'sent' && minutesPassed >= 2) {
       return 'taking-more-than-usual';
-    } else if (status === 'sent' && minutesPassed >= 2) {
+    } else if (status === 'sent' && minutesPassed >= 1) {
       return 'taking-too-long';
     } else if (status === 'sent') {
       return 'cooking-button';
     } else if (status === 'cooking') {
       return 'ready-button';
-    }  else {
+    } else {
       return 'received-button';
     }
   }
