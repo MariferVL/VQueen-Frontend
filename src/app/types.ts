@@ -2,15 +2,10 @@ export interface Order {
     id: number;
     userId: number;
     client: string;
-    products: OrderProduct[];
+    products: ProductWithQty[];
     status: string;
-    dataEntry: string;
+    dateEntry: string;
     dateProcessed?: string;
-  }
-  
-  export interface OrderProduct {
-    qty: number;
-    product: Product;
   }
   
   export interface Product {
@@ -29,7 +24,7 @@ export interface Order {
     id: number;
   }
   
-  export interface ProductWithQuantity extends Product {
-    quantity: number;
+  export interface ProductWithQty extends Product {
+    qty: number;
   }
   
