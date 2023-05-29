@@ -52,6 +52,8 @@ const routes: Routes = [
       { path: 'my-orders', component: ColabOrdersComponent },
     ],
   },
+  { path: 'kitchen', component: KitchenComponent },
+
   // Add a wildcard route to handle unknown URLs
   { path: '**', component: NotFoundComponent },
 
