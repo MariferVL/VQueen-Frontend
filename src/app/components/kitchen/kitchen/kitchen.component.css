@@ -1,0 +1,53 @@
+.order-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 3px;
+}
+
+.order-item {
+  flex-basis: 32.2%;
+  margin: 0.5rem 0rem;
+  margin-left: 0.5rem;
+  padding: 3px;
+  border: 1px solid #ccc;
+}
+
+.order-elem {
+  margin: 0.5rem 0rem;
+}
+
+#kitchen {
+  padding: 3rem 1rem;
+}
+
+/* div {
+  padding: 0.5rem 0;
+} */
+
+.product-item {
+  margin-bottom: 3px;
+}
+
+.cooking-button{
+  background-color: #62a862;
+  color: white;
+}
+
+.ready-button {
+  background-color: green;
+  color: white;
+}
+
+.taking-more-than-usual {
+  background-color: yellow;
+}
+
+.taking-too-long {
+  background-color: red;
+  color: white;
+}
+
+.received-button {
+  background-color: gray;
+  color: white;
+}

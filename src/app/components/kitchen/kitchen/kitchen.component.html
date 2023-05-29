@@ -1,1 +1,34 @@
-<p>kitchen works!</p>
+<section id="kitchenLogin" *ngIf="!isLoggedIn">
+  <app-login-form></app-login-form>
+</section>
+
+
+<section id="kitchen" *ngIf="isLoggedIn && userRole === 'chef'">
+    <h1>Kitchen Component</h1>
+    <p>Orders waiting to be prepared: {{ waitingOrdersCount }}</p>
+  
+    <div class="order-container">
+      <ng-container *ngFor="let order of orders.slice(0, 6); let i = index">
+        <div class="order-item" *ngIf="order.status !== 'ready'">
+          <div class="order-details">
+            <h6>Order Details:</h6>
+            <p class="order-elem">Customer: {{ order.client }}</p>
+            <p class="order-elem">ID: {{ order.id }}</p>
+            <p class="order-elem">Status: {{ order.status }}</p>
+            <p class="order-elem">Date Entry: {{ order.dateEntry }}</p>
+            <div *ngFor="let product of order.products" class="product-item">
+              <label>
+                <input type="checkbox">
+                {{ product.name }}  {{ product.qty || 1 }}
+              </label>
+            </div>
+          </div>
+          <button [ngClass]="getOrderColor(order.dateEntry, order.status)" (click)="editOrderStatus(order)">
+            {{ order.status === 'sent' ? 'Cooking' : 'Ready' }}
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </section>
+  <button (click)="logout()">LogOut</button>
+  
