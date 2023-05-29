@@ -121,7 +121,7 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
    */
   generateOrderNumber(): string {
     const timestamp = new Date().getTime();
-    return `#VQ${timestamp}`;
+    return `VQ${timestamp}`;
   }
 
   /**
