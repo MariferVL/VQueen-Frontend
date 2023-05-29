@@ -127,19 +127,18 @@ export class OrderService {
       this.httpOptions)
   }
 
-  //FIXME: Es dateEntry o dateProcessed? O es un dato extra?{"status": "delivered", "dateProcessed": "2022-03-05 16:00"}
   /**
    * Edit order data trough a PATCH request.
    * @param status 
    * @param dateProcessed 
    * @returns http response
    */
-  editOrder(id: number, status: string, dateEntry: string): Observable<Order> {
-    console.log('in edition: ', status, ' and ',dateEntry );
+  editOrder(id: number, status: string, dateProcessed: string): Observable<Order> {
+    console.log('in edition: ', status, ' and ',dateProcessed );
     
     return this.http.patch<Order>(
       `${this.apiUrl}/orders/${id}`,
-      { status, dateEntry },
+      { status, dateProcessed },
       this.httpOptions,
     );
   }
