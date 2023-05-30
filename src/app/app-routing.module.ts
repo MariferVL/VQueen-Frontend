@@ -5,7 +5,6 @@ import { MenuComponent } from './components/menu/menu/menu.component';
 import { DetailedMenuComponent } from './components/menu/detailed-menu/detailed-menu.component';
 import { DetailedOrderComponent } from './components/order/detailed-order/detailed-order.component';
 import { KitchenComponent } from './components/kitchen/kitchen/kitchen.component';
-import { ReadyComponent } from './components/kitchen/ready/ready.component';
 import { LocationsComponent } from './components/extras/locations/locations.component';
 import { OrderReceivedComponent } from './components/order/order-received/order-received.component';
 import { ManagerComponent } from './components/admin/manager/manager.component';
@@ -18,6 +17,7 @@ import { AddProductComponent } from './components/admin/add-product/add-product.
 import { ColabMainComponent } from './components/colab/colab-main/colab-main.component';
 import { ColabOrdersComponent } from './components/colab/colab-orders/colab-orders.component';
 import { NotFoundComponent } from './components/extras/not-found/not-found.component';
+import { ReadyToServeComponent } from './components/kitchen/ready-to-serve/ready-to-serve.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'vq-menu/:id', component: DetailedMenuComponent },
   { path: 'order', component: DetailedOrderComponent },
   { path: 'order-received', component: OrderReceivedComponent },
-  { path: 'ready', component: ReadyComponent },
+  { path: 'ready', component: ReadyToServeComponent },
   { path: 'admin', component: ManagerComponent },
   {
     path: 'member', component: EmployeesAdminComponent,
@@ -52,8 +52,6 @@ const routes: Routes = [
       { path: 'my-orders', component: ColabOrdersComponent },
     ],
   },
-  { path: 'kitchen', component: KitchenComponent },
-
   // Add a wildcard route to handle unknown URLs
   { path: '**', component: NotFoundComponent },
 
