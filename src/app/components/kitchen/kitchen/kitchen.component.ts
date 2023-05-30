@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { OrderService } from 'src/app/services/order.service';
 import { Order } from 'src/app/types';
@@ -100,12 +99,25 @@ export class KitchenComponent implements OnInit {
     if (order.status === 'sent') {
       order.status = 'cooking';
       order.dateProcessed = this.getCurrentDateTime();
-      this.orderService.editOrder(order.status, this.getCurrentDateTime());
+      this.orderService.editOrder(order.id, order.status, this.getCurrentDateTime()).subscribe({
+        next: (response: Order) => {
+          this.updateWaitingCount();
+        },
+        error: (error) => {
+          console.error('Error: ', error);
+        }
+      });
     } else if (order.status === 'cooking') {
       order.status = 'ready';
       order.dateProcessed = this.getCurrentDateTime();
-      this.orderService.editOrder(order.status, this.getCurrentDateTime());
-      this.updateWaitingCount();
+      this.orderService.editOrder(order.id, order.status, this.getCurrentDateTime()).subscribe({
+        next: (response: Order) => {
+          this.updateWaitingCount();
+        },
+        error: (error) => {
+          console.error('Error: ', error);
+        }
+      });
     }
     this.filterByStatus();
   }
