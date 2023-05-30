@@ -1,0 +1,5 @@
+body{
+    background-image: url('/src/assets/Images/main.png');
+    background-size: cover;
+    background-position: center;
+  }

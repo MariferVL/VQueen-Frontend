@@ -1,0 +1,85 @@
+/* Common styles */
+.table-background {
+  background-image: url('/src/assets/Images/backgroundVQ.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.orders-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.order-details {
+  text-align: center;
+}
+
+.order-number {
+  font-weight: bold;
+}
+
+.customer-name {
+  font-style: italic;
+}
+
+.delivered-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+
+  /* Tablet styles */
+  .orders-container {
+    flex-wrap: wrap;
+  }
+
+  .cooking-orders,
+  .ready-orders {
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+  }
+
+  .first-row {
+    width: 100%;
+  }
+
+  .remaining-rows {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .column {
+    width: 50%;
+  }
+
+  .order {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  /* Smart TV styles */
+  .orders-container {
+    justify-content: center;
+  }
+
+  .cooking-orders,
+  .ready-orders {
+    width: 50%;
+    margin-bottom: 20px;
+  }
+}

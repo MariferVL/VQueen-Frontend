@@ -1,3 +1,9 @@
+/* Common styles */
+body {
+  background-image: url('/src/assets/Images/bgOrders.png');
+  background-size: cover;
+  background-position: center;
+}
 .order-container {
   display: flex;
   flex-wrap: wrap;
