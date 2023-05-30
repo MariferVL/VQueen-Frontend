@@ -5,7 +5,7 @@ export interface Order {
     products: ProductWithQty[];
     status: string;
     dateEntry: string;
-    dateProcessed?: string;
+    dateProcessed: string;
   }
   
   export interface Product {
