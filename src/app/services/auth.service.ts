@@ -56,11 +56,17 @@ export class AuthService {
   }
 
   /**
-   * Get the userRole value
-   * @returns userRole as a Observable
+   * Compare the provided role with the stored userRole variable.
+   * @returns boolean
    */
-  getUserRole(): Observable<string> {
-    return this.userRoleChanged.asObservable();
+  hasRole(role: string): boolean {
+    console.log('this.userRole: ', this.userRole);
+    return this.userRole === role;
+  }
+
+  
+  isLoggedIn(): boolean {
+    return !!this.accessToken;
   }
   
   /**
