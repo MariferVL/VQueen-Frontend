@@ -32,17 +32,7 @@ export class KitchenComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('VQ - Royal Kitchen');
-
-    setTimeout(() => {
-      this.authService.getUserRole().subscribe((userRole: string) => {
-        this.userRole = userRole;
-        console.log('Chef this.userRole: ', this.userRole);
-
-        this.cdr.detectChanges();
-
-        this.getOrders();
-      });
-    });
+    this.getOrders();
 
     // Update waiting orders count every minute
     this.subscription = setInterval(() => {

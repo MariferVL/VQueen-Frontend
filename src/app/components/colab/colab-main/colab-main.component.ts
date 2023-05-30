@@ -31,15 +31,6 @@ export class ColabMainComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log('ColabMainComponent initialized.');
     this.titleService.setTitle('VQColab - Main');
-    setTimeout(() => {
-      this.authService.getUserRole().subscribe((userRole: string) => {
-        this.userRole = userRole;
-        console.log('Colab this.userRole: ', this.userRole);
-        //TODO: PREGUNTA: Es necesario o mas bien correcto
-        // usar este metodo para detectar cambios?
-        this.cdr.detectChanges();
-      });
-    });
   }
 
 

@@ -31,8 +31,6 @@ export class LoginFormComponent {
 
   @Output() loginSubmit: EventEmitter<any> = new EventEmitter<any>();
 
-// login.component.ts
-
 async login(): Promise<void> {
   try {
     const response: any = await this.authService.login(this.email, this.password).toPromise();
@@ -44,9 +42,6 @@ async login(): Promise<void> {
 
     if (user) {
       this.authService.setUserRole(user.role);
-      this.authService.getUserRole().subscribe((userRole: string) => {
-        this.userRole = userRole;
-      });
 
       this.userID = user.id;
     } else {

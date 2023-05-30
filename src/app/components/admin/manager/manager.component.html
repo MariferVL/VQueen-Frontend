@@ -1,4 +1,4 @@
-<section id="mainAdmin" *ngIf="isLoggedIn() && userRole === 'admin'">
+<section id="mainAdmin">
         <h2>{{title}}</h2>
 
         <div>
@@ -12,5 +12,5 @@
     <header>
         <h2>Admin V Queen</h2>
     </header>
-    <app-login-form (loginSubmit)="onLoginSubmit($event)"></app-login-form>
+    <app-login-form></app-login-form>
 </section>

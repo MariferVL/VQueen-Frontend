@@ -1,29 +1,23 @@
 <main role="main" class="table-background">
     <div class="orders-container">
       <section class="cooking-orders">
-        <div class="column">
-          <article class="order" *ngFor="let order of cookingOrders">
-            <div class="order-details">
-              <h2 class="order-number">Order #{{ order.id }}</h2>
-              <p class="customer-name">{{ order.client }}</p>
-            </div>
-          </article>
-        </div>
-        <div class="column">
-          <article class="order" *ngFor="let order of cookingOrders">
-            <div class="order-details">
-              <h2 class="order-number">Order #{{ order.id }}</h2>
-              <p class="customer-name">{{ order.client }}</p>
-            </div>
-          </article>
+        <div class="remaining-rows">
+          <div class="column">
+            <article class="order" *ngFor="let order of cookingOrders">
+              <div class="order-details">
+                <h2 class="customer-name">{{ order.client }}</h2>
+                <p class="order-number">Order #{{ order.id }}</p>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
       <section class="ready-orders">
         <div class="first-row">
           <article class="order" *ngFor="let order of readyOrders.slice(0,1); let i = index;">
             <div class="order-details">
-              <h2 class="order-number">Order #{{ order.id }}</h2>
-              <p class="customer-name">{{ order.client }}</p>
+              <h3 class="customer-name">{{ order.client }}</h3>
+              <p class="order-number">Order #{{ order.id }}</p>
               <button class="delivered-button" (click)="markAsDelivered(order)">Delivered</button>
             </div>
           </article>
@@ -32,8 +26,8 @@
           <div class="column" *ngFor="let order of readyOrders.slice(2,readyOrders.length-1); let i = index;">
             <article class="order" >
               <div class="order-details">
-                <h2 class="order-number">Order #{{ order.id }}</h2>
-                <p class="customer-name">{{ order.client }}</p>
+                <h3 class="customer-name">{{ order.client }}</h3>
+                <p class="order-number">Order #{{ order.id }}</p>
                 <button class="delivered-button" (click)="markAsDelivered(order)">Delivered</button>
               </div>
             </article>

@@ -2,7 +2,7 @@
   <app-login-form></app-login-form>
 </section>
 
-<section id="kitchen" *ngIf="isLoggedIn && userRole === 'chef'">
+<section id="kitchen" *ngIf="isLoggedIn">
   <h1>Kitchen Component</h1>
   <p>Orders waiting to be prepared: {{ waitingOrdersCount }}</p>
 

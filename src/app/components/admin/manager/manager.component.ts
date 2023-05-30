@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../../services/auth.service';
 import { Subscription } from 'rxjs';
@@ -16,27 +16,11 @@ export class ManagerComponent implements OnInit, OnDestroy {
   constructor(
     private titleService: Title,
     private authService: AuthService,
-    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
     console.log('ManagerComponent initialized.');
     this.titleService.setTitle('VQAdmin - Main');
-
-    setTimeout(() => {
-      this.authService.getUserRole().subscribe((userRole: string) => {
-        this.userRole = userRole;
-        console.log('Manager this.userRole: ', this.userRole);
-        //TODO: PREGUNTA: Es necesario o mas bien correcto
-        // usar este metodo para detectar cambios?
-        this.cdr.detectChanges();
-      });
-    });
-  }
-
-  onLoginSubmit(data: any): void {
-    console.log('Manager Login form submitted:', data);
-    console.log('this.authService.getUserRole(): ', this.userRole);
   }
 
   isLoggedIn(): boolean {
