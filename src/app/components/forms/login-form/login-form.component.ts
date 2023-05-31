@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { AdminService } from 'src/app/services/admin.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -21,6 +22,7 @@ export class LoginFormComponent {
   constructor(
     private authService: AuthService,
     private adminService: AdminService,
+    private router: Router
   ) {
     const token = localStorage.getItem('accessToken');
     if (token) {
@@ -31,25 +33,26 @@ export class LoginFormComponent {
 
   @Output() loginSubmit: EventEmitter<any> = new EventEmitter<any>();
 
-async login(): Promise<void> {
-  try {
-    const response: any = await this.authService.login(this.email, this.password).toPromise();
-    this.authService.accessToken = response.accessToken;
-    localStorage.setItem('accessToken', response.accessToken);
+  async login(): Promise<void> {
+    try {
+      const response: any = await this.authService.login(this.email, this.password).toPromise();
+      this.authService.accessToken = response.accessToken;
+      localStorage.setItem('accessToken', response.accessToken);
 
-    const users: User[] = await firstValueFrom(this.adminService.getUsers());
-    const user = users.find((user) => user.email === this.email);
+      const users: User[] = await firstValueFrom(this.adminService.getUsers());
+      const user = users.find((user) => user.email === this.email);
 
-    if (user) {
-      this.authService.setUserRole(user.role);
+      if (user) {
+        this.authService.setUserRole(user.role);
 
-      this.userID = user.id;
-    } else {
-      console.log('User not found.');
+        this.userID = user.id;
+ 
+      } else {
+        console.log('User not found.');
+      }
+    } catch (error) {
+      console.error(error);
     }
-  } catch (error) {
-    console.error(error);
   }
-}
 
 }

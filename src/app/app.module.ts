@@ -26,7 +26,6 @@ import { EditMenuComponent } from './components/admin/edit-menu/edit-menu.compon
 import { NotFoundComponent } from './components/extras/not-found/not-found.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { MenuFormComponent } from './components/forms/menu-form/menu-form.component';
-import { NavBarComponent } from './components/extras/nav-bar/nav-bar.component';
 import { ColabMainComponent } from './components/colab/colab-main/colab-main.component';
 import { AddEmployeeComponent } from './components/admin/add-employee/add-employee.component';
 import { EmployeeFormComponent } from './components/forms/employee-form/employee-form.component';
@@ -34,6 +33,9 @@ import { ColabOrdersComponent } from './components/colab/colab-orders/colab-orde
 import { AuthService } from './services/auth.service';
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { ReadyToServeComponent } from './components/kitchen/ready-to-serve/ready-to-serve.component';
+import { AdminService } from './services/admin.service';
+import { OrderService } from './services/order.service';
+import { LoginComponent } from './components/login/login/login.component';
 
 @NgModule({
   declarations: [
@@ -57,12 +59,12 @@ import { ReadyToServeComponent } from './components/kitchen/ready-to-serve/ready
     MenuAdminComponent,
     MenuComponent, 
     MenuFormComponent,
-    NavBarComponent,
     NotFoundComponent,
     OrderModalComponent,
     OrderReceivedComponent,
     ReadyToServeComponent,
     UsernameModalComponent,
+    LoginComponent,
  
   ],
   imports: [
@@ -75,7 +77,9 @@ import { ReadyToServeComponent } from './components/kitchen/ready-to-serve/ready
     MatIconModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AdminService,
+    OrderService,
   ],
   bootstrap: [AppComponent]
 })
