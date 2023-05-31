@@ -1,0 +1,14 @@
+<section id="employeeLogin" class="bg-image" *ngIf="!isLoggedIn()">
+    <app-login-form></app-login-form>
+
+</section>
+<section id="mainAdmin" *ngIf="isLoggedIn()">
+    <h2>{{title}}</h2>
+
+    <div>
+        <a routerLink="/colab" class="btn">Collaborator</a>
+        <a routerLink="/kitchen" class="btn">Kitchen</a>
+        <a routerLink="/admin" class="btn">Manager</a>
+
+    </div>
+</section>

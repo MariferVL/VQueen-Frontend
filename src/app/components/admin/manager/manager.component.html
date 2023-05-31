@@ -1,4 +1,4 @@
-<section id="mainAdmin">
+<section id="mainAdmin" class="bg-image">
         <h2>{{title}}</h2>
 
         <div>
@@ -6,11 +6,5 @@
             <a routerLink="/member" class="btn">Administrate Employees</a>
         </div>
 </section>
-<button (click)="logout()">LogOut</button>
+<!-- <button (click)="logout()">LogOut</button> -->
 
-<section id="loginAdmin" *ngIf="!isLoggedIn()">
-    <header>
-        <h2>Admin V Queen</h2>
-    </header>
-    <app-login-form></app-login-form>
-</section>

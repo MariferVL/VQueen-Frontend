@@ -1,24 +1,27 @@
-<h1 class="heading">Zoom the Menu, Taste the Dream:<br>Flavor's Just a Click away,<br>it'll Make You Scream!</h1>
+<section id="detailedMenu" class="bg-image">
+  <h1 class="heading">Zoom the Menu, Taste the Dream:<br>Flavor's Just a Click away,<br>it'll Make You Scream!
+  </h1>
 
-<article *ngIf="menu && !isLoading">
-  <h3>{{menu.name}}</h3>
-  <figure>
-    <img [src]="foodImg" alt="{{menu.name}}" class="foodImg">
-    <figcaption>Image:{{menu.name}}</figcaption>
+  <article *ngIf="menu && !isLoading">
+    <h3>{{menu.name}}</h3>
+    <figure>
+      <img [src]="foodImg" alt="{{menu.name}}" class="foodImg">
+      <figcaption>Image:{{menu.name}}</figcaption>
+    </figure>
+    <section class="details">
+      <article>
+        <h5>Price:</h5>
+        <p>£{{menu.price}}</p>
+      </article>
+    </section>
+    <footer>
+      <a routerLink="/order" (click)="selectProduct(menu)">Want It</a>
+      <a routerLink="/menu">Back</a>
+    </footer>
+  </article>
+
+  <figure *ngIf="isLoading">
+    <img src="" alt="Loading">
+    <figcaption>Loading...</figcaption>
   </figure>
-  <section class="details">
-    <article>
-      <h5>Price:</h5>
-      <p>£{{menu.price}}</p>
-    </article>
-  </section>
-  <footer>
-    <a routerLink="/order" (click)="selectProduct(menu)">Want It</a>
-    <a routerLink="/menu">Back</a>
-  </footer>
-</article>
-
-<figure *ngIf="isLoading">
-  <img src="" alt="Loading">
-  <figcaption>Loading...</figcaption>
-</figure>
+</section>

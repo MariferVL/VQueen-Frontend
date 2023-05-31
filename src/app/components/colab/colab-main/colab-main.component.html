@@ -1,4 +1,4 @@
-<section id="employeeLogin" *ngIf="!isLoggedIn">
+<section id="employeeLogin" class="bg-image" *ngIf="!isLoggedIn">
   <app-login-form></app-login-form>
 
 </section>
@@ -10,4 +10,4 @@
   <a routerLink="/colab/my-orders" class="btn">Check My Orders</a>
   <router-outlet></router-outlet>
 </section>
-<button (click)="logout()">LogOut</button>
+<!-- <button (click)="logout()">LogOut</button> -->

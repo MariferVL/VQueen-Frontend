@@ -1,104 +1,41 @@
-<header>
-    <h1>Order Details</h1>
-</header>
-<main >
-    <article>
-        <h5>Order Information</h5>
-        <p>Customer Name: {{ customerName }}</p>
-
-        <h3>Selected Products</h3>
-        <table *ngIf="selectedProducts.length > 0">
-            <tr>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th></th>
-                <th>Action</th>
-            </tr>
-            <tr *ngFor="let product of selectedProducts; let i = index">
-                <td>{{ product.name }}</td>
-                <td>{{ product.price | currency }}</td>
-                <td><div class="product-qty">
-                    <button mat-icon-button (click)="increaseQty(i)">
-                        <mat-icon>+</mat-icon>
-                      </button>
-                    <input type="number" [value]="product.qty" [(ngModel)]="product.qty" min="1" step="1">
-                    <button mat-icon-button (click)="decreaseQty(i)">
-                        <mat-icon>-</mat-icon>
-                      </button>
-                  </div></td>
-                <td><button (click)="removeProduct(i)">Remove</button></td>
-            </tr>
-        </table>
-        <p>Total: {{ calculateTotal() | currency }}</p>
-        <p>Tip (10%): {{ calculateTip(calculateTotal(), 10) | currency }}</p>
-        <button routerLink="/vq-menu">Add More Products</button>
-        <button (click)="confirmOrder()">Confirm Order</button>
-        <button (click)="cancelOrder()">Delete Order</button>
-
-    </article>
-
-</main>
-<!-- <figure *ngIf="isLoading">
-    <img src="" alt="Loading">
-    <p>Loading...</p>
-</figure> -->
-
-<!-- 
-<main>
-    <section *ngIf="!isLoading">
-        <h2>Order Information</h2>
-        <div>
-            <label for="order-id">Order ID:</label>
-            <span id="order-id">{{orderNum}}</span>
-        </div>
-        <div>
-            <label for="order-date">Order Date:</label>
-            <span id="order-date">{{ orderDate | date }}</span>
-        </div>
-        <div>
-            <label for="customer-name">Customer Name:</label>
-            <span id="customer-name">{{ customerName }}</span>
-        </div>
+<section class="bg-image">
+    <header>
+        <h1>Order Details</h1>
+    </header>
+    <main >
+        <article>
+            <h5>Order Information</h5>
+            <p>Customer Name: {{ customerName }}</p>
+    
+            <h3>Selected Products</h3>
+            <table *ngIf="selectedProducts.length > 0">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th></th>
+                    <th>Action</th>
+                </tr>
+                <tr *ngFor="let product of selectedProducts; let i = index">
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price | currency }}</td>
+                    <td><div class="product-qty">
+                        <button mat-icon-button (click)="increaseQty(i)">
+                            <mat-icon>+</mat-icon>
+                          </button>
+                        <input type="number" [value]="product.qty" [(ngModel)]="product.qty" min="1" step="1">
+                        <button mat-icon-button (click)="decreaseQty(i)">
+                            <mat-icon>-</mat-icon>
+                          </button>
+                      </div></td>
+                    <td><button (click)="removeProduct(i)">Remove</button></td>
+                </tr>
+            </table>
+            <p>Total: {{ calculateTotal() | currency }}</p>
+            <p>Tip (10%): {{ calculateTip(calculateTotal(), 10) | currency }}</p>
+            <button routerLink="/vq-menu">Add More Products</button>
+            <button (click)="confirmOrder()">Confirm Order</button>
+            <button (click)="cancelOrder()">Delete Order</button>
+    
+        </article>
+    </main>
 </section>
-<section>
-    <h2>Order Items</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Qty</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Product A</td>
-                <td>2</td>
-                <td>£10.00</td>
-            </tr>
-            <tr>
-                <td>Product B</td>
-                <td>1</td>
-                <td>£5.99</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="2">Total:</td>
-                <td>£25.99</td>
-            </tr>
-        </tfoot>
-    </table>
-</section>
-
-<figure *ngIf="isLoading">
-    <img src="" alt="Loading">
-    <figcaption>Loading...</figcaption>
-</figure>
-
-<button (click)="confirmOrder()">Send Order</button>
-
-<a routerLink="/vq-menu">Back Menu</a>
-<a routerLink="/home">Back Home</a>
-
-</main> -->
