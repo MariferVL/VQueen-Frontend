@@ -38,10 +38,18 @@
 }
 
 /* Responsive styles */
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .orders-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+/* @media (min-width: 768px) {
 
   /* Tablet styles */
-  .orders-container {
+  /* .orders-container {
     flex-wrap: wrap;
   }
 
@@ -68,7 +76,7 @@
   .order {
     width: 100%;
   }
-}
+} */
 
 @media (min-width: 1024px) {
 
