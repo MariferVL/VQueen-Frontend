@@ -1,15 +1,9 @@
 <section id="home" class="bg-image">
-    <header>
-      <h1>Welcome to the V Queen Restaurant</h1>
-      <img [src]="logoImg" alt="Restaurant Logo" class="logo">
-    </header>
-    <div class="buttons">
-      <a (click)="autoLogin()" class="btn">Full Menu</a>
-      <a (click)="autoLogin()" class="btn">Detailed Menu</a>
-      <a routerLink="/colab" class="btn">Employee Login</a>
-    </div>
-  </section>
-  
-  <a routerLink="/login">Login</a>
+  <div class="container">
+    <img [src]="logoImg" alt="Restaurant Logo" class="logo">
+    <button (click)="autoLogin()" class="btn1">Full Menu</button>
+    <button (click)="autoLogin()" class="btn2">Detailed Menu</button>
+  </div>
+</section>
 
-  <!-- <button (click)="logout()">LogOut</button> -->
+<!-- <button (click)="logout()">LogOut</button> -->
