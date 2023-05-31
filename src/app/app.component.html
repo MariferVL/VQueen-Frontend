@@ -1,5 +1,14 @@
-<app-nav-bar></app-nav-bar>
 <router-outlet></router-outlet>
-<footer>
-    <p>&copy; 2023 Vegan Queen. All rights reserved.</p>
-</footer>
+<footer class="footer">
+  <div class="foot">
+    <a routerLink="/home">Home</a>
+    <ng-container *ngIf="isLoggedIn()">
+      <button (click)="logout()">LogOut</button>
+    </ng-container>
+    <ng-container *ngIf="!isLoggedIn()">
+      <a routerLink="/login">Login</a>
+    </ng-container>
+  </div>
+  <div class="foot">
+    <p>&copy; 2023 V Queen. All rights reserved.</p>
+  </div>
