@@ -1,48 +1,75 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.heading {
+#detailedMenu {
+  padding: 4rem;
   text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
+  color: #fff;
+}
+
+#detailedMenu .heading {
+  font-size: 3rem;
   line-height: 1.5;
+  margin-bottom: 2rem;
 }
 
-.heading::before,
-.heading::after {
-  content: "";
-  display: block;
-}
-
-.heading::before {
-  margin-bottom: 1rem;
-}
-
-.heading::after {
-  margin-top: 1rem;
-}
-
-.foodImg {
-  width: 33%;
-}
-
-.details {
+#detailedMenu .menu-grid {
   display: grid;
-  grid-template-columns: 88rem;
-  grid-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+  justify-items: center;
+  margin-top: 2rem;
 }
 
-.article h5 {
-  margin: 0;
-  position: absolute;
+#detailedMenu .menu-item {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.article p {
-  margin: 0;
-  position: relative;
-  margin-left: 8rem;
+#detailedMenu .menu-item figure {
+  margin-bottom: 1.5rem;
+}
+
+#detailedMenu .menu-item .foodImg {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+#detailedMenu .menu-item figcaption {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+#detailedMenu .menu-item .details {
+  margin-bottom: 1.5rem;
+}
+
+#detailedMenu .menu-item h5 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+#detailedMenu .menu-item p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+#detailedMenu .menu-item footer {
+  margin-top: 1.5rem;
+}
+
+#detailedMenu .menu-item footer a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #AE8625;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+  margin-right: 1rem;
+}
+
+#detailedMenu .menu-item footer a:hover {
+  background-color: #D2AC47;
 }
