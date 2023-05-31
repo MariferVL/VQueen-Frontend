@@ -18,18 +18,23 @@ import { ColabMainComponent } from './components/colab/colab-main/colab-main.com
 import { ColabOrdersComponent } from './components/colab/colab-orders/colab-orders.component';
 import { NotFoundComponent } from './components/extras/not-found/not-found.component';
 import { ReadyToServeComponent } from './components/kitchen/ready-to-serve/ready-to-serve.component';
+import { authAdminGuard } from './guard/authAdmin/auth-admin.guard';
+import { authKitchenGuard } from './guard/authKitchen/auth-kitchen.guard';
+import { authColabGuard } from './guard/authColab/auth-colab.guard';
+import { LoginComponent } from './components/login/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, pathMatch: 'full' },
-  { path: 'kitchen', component: KitchenComponent },
+  { path: 'login', component: LoginComponent},
+  { path: 'kitchen', component: KitchenComponent,canActivate: [authKitchenGuard] },
   { path: 'locations', component: LocationsComponent },
   { path: 'vq-menu', component: MenuComponent },
   { path: 'vq-menu/:id', component: DetailedMenuComponent },
   { path: 'order', component: DetailedOrderComponent },
   { path: 'order-received', component: OrderReceivedComponent },
   { path: 'ready', component: ReadyToServeComponent },
-  { path: 'admin', component: ManagerComponent },
+  { path: 'admin', component: ManagerComponent, canActivate: [authAdminGuard] },
   {
     path: 'member', component: EmployeesAdminComponent,
     children: [
@@ -46,7 +51,7 @@ const routes: Routes = [
   },
   {
     path: 'colab',
-    component: ColabMainComponent,
+    component: ColabMainComponent, canActivate: [authColabGuard],
     children: [
       { path: 'take-order', component: MenuComponent },
       { path: 'my-orders', component: ColabOrdersComponent },
