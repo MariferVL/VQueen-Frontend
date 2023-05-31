@@ -1,14 +1,15 @@
-<section id="employeeLogin" class="bg-image" *ngIf="!isLoggedIn()">
+<section id="employeeLogin" class="container" *ngIf="!isLoggedIn()">
     <app-login-form></app-login-form>
 
 </section>
-<section id="mainAdmin" *ngIf="isLoggedIn()">
-    <h2>{{title}}</h2>
-
-    <div>
+<section id="mainAdmin" *ngIf="isLoggedIn()" class="landing-page">
+    <div class="content">
+      <h1 class="title">{{title}}</h1>
+      <div class="buttons">
         <a routerLink="/colab" class="btn">Collaborator</a>
         <a routerLink="/kitchen" class="btn">Kitchen</a>
         <a routerLink="/admin" class="btn">Manager</a>
-
+      </div>
     </div>
-</section>
+  </section>
+  

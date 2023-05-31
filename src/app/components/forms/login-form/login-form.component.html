@@ -1,10 +1,13 @@
-<section>
+<section id="employeeLogin">
+  <div class="card">
+    <h2>Login</h2>
     <form (ngSubmit)="login()">
-        <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
-        <input type="password" [(ngModel)]="password" name="password" placeholder="Password" [type]="showPassword ? 'text' : 'password'" required>
-        <label>
-          <input type="checkbox" [(ngModel)]="showPassword" name="showPassword"> Show Password
-        </label>
-        <button type="submit">Login</button>
-      </form>
+      <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
+      <input type="password" [(ngModel)]="password" name="password" placeholder="Password" [type]="showPassword ? 'text' : 'password'" required>
+      <label>
+        <input type="checkbox" [(ngModel)]="showPassword" name="showPassword"> Show Password
+      </label>
+      <button type="submit">Login</button>
+    </form>
+  </div>
 </section>

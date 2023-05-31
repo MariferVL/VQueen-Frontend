@@ -1,0 +1,101 @@
+/* Common styles */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Mobile first CSS */
+.container app-login-form {
+  width: 100%;
+}
+
+.landing-page {
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.landing-page .content {
+  margin-bottom: 2rem;
+}
+
+.landing-page .title {
+  font-size: 2rem;
+  color: #2D4B08;
+  margin-bottom: 11rem;
+  background-color: #f5f5f59b;
+
+}
+
+.landing-page .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.landing-page .btn {
+  display: block;
+  width:  8rem;
+  max-width: 20rem;
+  margin-bottom: 3rem;
+  padding: 3rem 0;
+  background: linear-gradient(to right, #AE8625, #F7EF8A, #D2AC47, #EDC967);
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.2rem;
+  border-radius: 100%;
+  height: 8rem;
+  
+}
+
+
+/* Tablet CSS */
+@media screen and (min-width: 768px) {
+  .container {
+    height: 80vh;
+  }
+
+  .container app-login-form {
+    width: 50%;
+  }
+
+  .landing-page .content {
+    margin-bottom: 4rem;
+  }
+
+  .landing-page .title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .landing-page .buttons {
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 8rem;
+  }
+
+  .landing-page .btn {
+    margin-right: 1rem;
+    margin-bottom: 0;
+  }
+}
+
+/* Smart TV CSS */
+@media screen and (min-width: 1200px) {
+  .container {
+    height: 60vh;
+  }
+
+  .container app-login-form {
+    width: 30%;
+  }
+}
