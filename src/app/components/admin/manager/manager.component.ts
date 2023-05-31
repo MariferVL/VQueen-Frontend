@@ -19,7 +19,6 @@ export class ManagerComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    console.log('ManagerComponent initialized.');
     this.titleService.setTitle('VQAdmin - Main');
   }
 
