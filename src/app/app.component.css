@@ -1,43 +1,71 @@
 /* Mobile styles */
 .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  background-color: #162505;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 10; /* Increase the z-index */
+}
+
+.footer a,
+button {
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: rgba(240, 255, 255, 0.594);
+}
+
+.app-home {
+  position: relative; /* Add this line */
+  z-index: 20; /* Increase the z-index */
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+  .footer {
     height: 4rem;
-    background-color: #1d292e;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    z-index: 100;
+    padding: 1.5rem;
   }
-  
-  .footer a,button  {
-    background-color: transparent;
-    color: white;
-    text-decoration: none;
-  }
-  
+
   .footer p {
-    margin: 0;
-    font-size: 0.8rem;
-    color: rgba(240, 255, 255, 0.594);
+    font-size: 0.7rem;
   }
-  
- 
-  
-  /* Tablet styles */
-  @media (min-width: 768px) {
-    .footer {
-      height: 4rem;
-      padding: 1.5rem;
-    }
-  
-    .footer p {
-      font-size: 0.7rem;
-    }
+}
+
+/* Laptop styles */
+@media (min-width: 1024px) {
+  .footer {
+    height: 4rem;
+    padding: 2rem;
   }
-  
+
+  .footer p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Smart TV styles */
+@media (min-width: 1920px) {
+  .footer {
+    height: 6rem;
+    padding: 3rem;
+  }
+
+  .footer p {
+    font-size: 1rem;
+  }
+}

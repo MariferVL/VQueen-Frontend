@@ -1,67 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
 body {
     margin: 0;
     padding: 0;
 }
 
-button,
-a {
-    background-color: black;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    cursor: pointer;
-    outline: none;
-    padding: 0.5rem;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    text-decoration: none;
-}
-
-input,
-textarea {
-    border: 2px solid black;
-    border-radius: 8px;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    padding: 8px;
-}
-
-#page-wrap {
-    background-color: #EEE;
-    min-height: 100vh;
-    padding: 0;
-    width: 100vw;
-}
-
-#max-width-column {
-    background-color: white;
-    margin: 0 auto;
-    max-width: 700px;
-    min-height: 100vh;
-    padding: 16px;
-    position: relative;
-}
-
-#top-bar {
-    border-bottom: 2px solid black;
-}
-
-#app-heading {
-    margin-top: 0;
-}
-
-#my-listings-button {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-}
-
-#content-wrap {
-    padding: 16px;
-}
-
-/* Styles for the background overlay */
 .background-overlay {
     position: fixed;
     top: 0;
@@ -73,25 +14,8 @@ textarea {
     background-size: cover;
     background-position: center;
     opacity: 0.7;
-    /* Adjust the opacity as needed */
     z-index: -1;
 }
 
 
-.content-box {
-    border-radius: 8px;
-    padding: 16px;
-    position: relative;
-    margin-bottom: 16px;
-}
 
-.buttons-container {
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    padding: 16px;
-}
-
-.buttons-container>button {
-    margin-left: 8px;
-}
