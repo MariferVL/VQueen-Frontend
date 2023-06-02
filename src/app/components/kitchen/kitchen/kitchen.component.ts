@@ -23,12 +23,7 @@ export class KitchenComponent implements OnInit {
     private authService: AuthService,
     private cdr: ChangeDetectorRef,
 
-  ) {
-    const token = localStorage.getItem('accessToken');
-    if (token) {
-      this.authService.accessToken = token;
-    }
-  }
+  ) { }
 
   ngOnInit() {
     this.titleService.setTitle('VQ - Royal Kitchen');

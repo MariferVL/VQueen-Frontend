@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  logoImg: string = 'assets/Images/vqlogo1.png'; 
+  logoImg: string = 'assets/Images/vqlogo.png'; 
   private autoLoginSubs: Subscription | undefined;
   
   constructor(

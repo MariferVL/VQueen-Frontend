@@ -18,12 +18,7 @@ export class ReadyToServeComponent implements OnInit {
     private titleService: Title,
     private orderService: OrderService,
     private authService: AuthService,
-  ) {
-    const token = localStorage.getItem('accessToken');
-    if (token) {
-      this.authService.accessToken = token;
-    }
-  }
+  ) { }
 
   ngOnInit() {
     this.titleService.setTitle('VQ - Ready!');

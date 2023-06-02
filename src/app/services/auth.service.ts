@@ -16,7 +16,12 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private router: Router) { }
+    private router: Router) { 
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        this.accessToken = token;
+      }
+    }
 
   login(email: string, password: string): Observable<any> {
     const postData = { email, password };

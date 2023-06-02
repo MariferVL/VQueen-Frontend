@@ -21,12 +21,7 @@ export class ColabMainComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private cdr: ChangeDetectorRef,
 
-  ) {
-    const token = localStorage.getItem('accessToken');
-    if (token) {
-      this.authService.accessToken = token;
-    }
-  }
+  ) {  }
 
   ngOnInit(): void {
     console.log('ColabMainComponent initialized.');

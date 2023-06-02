@@ -24,10 +24,6 @@ export class LoginFormComponent {
     private adminService: AdminService,
     private router: Router
   ) {
-    const token = localStorage.getItem('accessToken');
-    if (token) {
-      this.authService.accessToken = token;
-    }
   }
 
 
