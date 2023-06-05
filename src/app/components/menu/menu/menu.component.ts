@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 
-import { Product } from '../../../types';
+import { Product } from '../../../interfaces/types';
 import { AdminService } from '../../../services/admin.service';
 import { OrderService } from 'src/app/services/order.service';
 

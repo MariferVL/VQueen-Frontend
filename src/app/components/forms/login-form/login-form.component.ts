@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { AdminService } from 'src/app/services/admin.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from 'src/app/types';
+import { User } from 'src/app/interfaces/types';
 
 @Component({
   selector: 'app-login-form',
@@ -15,7 +15,6 @@ export class LoginFormComponent {
   email: string = '';
   password: string = '';
   showPassword: boolean = false;
-  userRole: string = '';
   userID: number = 0;
 
 

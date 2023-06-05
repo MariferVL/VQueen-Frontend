@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { User } from 'src/app/types';
+import { User } from 'src/app/interfaces/types';
 
 @Component({
   selector: 'app-employee-modal',

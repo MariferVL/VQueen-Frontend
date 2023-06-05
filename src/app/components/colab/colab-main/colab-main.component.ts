@@ -12,7 +12,6 @@ export class ColabMainComponent implements OnInit, OnDestroy {
   email: string = '';
   password: string = '';
   showPassword: boolean = false;
-  userRole: string = '';
   userID: number = 0;
   private subscription: Subscription | undefined;
 

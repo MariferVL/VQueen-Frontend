@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from 'src/app/services/auth.service';
 import { OrderService } from 'src/app/services/order.service';
-import { Order } from 'src/app/types';
+import { Order } from 'src/app/interfaces/types';
 
 @Component({
   selector: 'app-kitchen',
@@ -14,7 +14,6 @@ export class KitchenComponent implements OnInit {
   orders: Order[] = [];
   filteredOrders: Order[] = [];
   waitingOrdersCount: number = 0;
-  userRole: string = '';
   private subscription: any;
 
   constructor(

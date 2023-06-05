@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 
 import { AdminService } from '../../../services/admin.service';
 import { OrderService } from '../../../services/order.service';
-import { Product } from '../../../types';
+import { Product } from '../../../interfaces/types';
 import { Subscription } from 'rxjs';
 
 @Component({

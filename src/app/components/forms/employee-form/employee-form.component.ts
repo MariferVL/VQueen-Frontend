@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { User } from '../../../types';
+import { User } from '../../../interfaces/types';
 
 @Component({
   selector: 'app-employee-form',

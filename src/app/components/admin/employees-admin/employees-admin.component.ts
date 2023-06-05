@@ -5,7 +5,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 
 import { AdminService } from '../../../services/admin.service';
-import { User } from '../../../types';
+import { User } from '../../../interfaces/types';
 import { EmployeeModalComponent } from '../../modals/employee-modal/employee-modal.component';
 
 @Component({

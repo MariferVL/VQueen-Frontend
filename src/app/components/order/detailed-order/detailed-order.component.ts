@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 
 import { UsernameModalComponent } from '../../modals/username-modal/username-modal.component';
 import { OrderModalComponent } from '../../modals/order-modal/order-modal.component';
-import { Product, ProductWithQty } from '../../../types';
+import { Product, ProductWithQty } from '../../../interfaces/types';
 import { AdminService } from '../../../services/admin.service';
 import { OrderService } from '../../../services/order.service';
 

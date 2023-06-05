@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Product, ProductWithQty } from 'src/app/types';
+import { Product, ProductWithQty } from 'src/app/interfaces/types';
 
 @Component({
   selector: 'app-order-modal',

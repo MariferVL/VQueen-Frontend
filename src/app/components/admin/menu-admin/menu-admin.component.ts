@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { AdminService } from '../../../services/admin.service';
-import { Product } from '../../../types';
+import { Product } from '../../../interfaces/types';
 
 @Component({
   selector: 'app-menu-admin',

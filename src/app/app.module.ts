@@ -80,7 +80,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     HttpClientModule,
     MatIconModule,
-    FontAwesomeModule
+    FontAwesomeModule, 
   ],
   providers: [
     AuthService,

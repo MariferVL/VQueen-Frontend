@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from '../../../types';
+import { Product } from '../../../interfaces/types';
 import { Title } from '@angular/platform-browser';
 
 @Component({

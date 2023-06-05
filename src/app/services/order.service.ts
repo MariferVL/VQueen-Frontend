@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Order, Product, ProductWithQty, User } from '../types';
+import { Order, Product, ProductWithQty, User } from '../interfaces/types';
 import { AuthService } from './auth.service';
 
 

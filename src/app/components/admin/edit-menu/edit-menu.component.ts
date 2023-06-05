@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../../../types';
+import { Product } from '../../../interfaces/types';
 import { AdminService } from '../../../services/admin.service';
 
 @Component({

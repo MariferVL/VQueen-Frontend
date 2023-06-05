@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { User } from '../../../types';
+import { User } from '../../../interfaces/types';
 import { AdminService } from '../../../services/admin.service';
 
 @Component({

@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  userRole: string = '';
   title: string = 'Welcome!';
   private subscription: Subscription | undefined;
 

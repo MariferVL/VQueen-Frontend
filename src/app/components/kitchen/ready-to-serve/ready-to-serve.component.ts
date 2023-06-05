@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from 'src/app/services/auth.service';
 import { OrderService } from 'src/app/services/order.service';
-import { Order } from 'src/app/types';
+import { Order } from 'src/app/interfaces/types';
 
 @Component({
   selector: 'app-ready-to-serve',

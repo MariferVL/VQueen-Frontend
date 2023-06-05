@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Product } from '../../../types';
+import { Product } from '../../../interfaces/types';
 
 @Component({
   selector: 'app-menu-form',
