@@ -1,24 +1,43 @@
-<h2>Menu Management</h2>
-
-<router-outlet> 
+<section id="menuManagement">
+  <h2>Menu Management</h2>
   <a routerLink="/menu/add-product">
     <button>Add New Product</button>
   </a>
-</router-outlet>
-<figure *ngIf="isLoading">
-  <img src="" alt="Loading">
-  <figcaption>Loading...</figcaption>
-</figure>
+  <button class="back" routerLink="/admin">
+    <fa-icon [icon]="faArrowLeft"></fa-icon>
+  </button>
 
-<div class="content-box" *ngFor="let menu of menus">
-  <h3>{{ menu.name }}</h3>
-  <p>Picture: {{menu.image}}</p>
-  <p>Price: £{{ menu.price }}</p>
-  <div class="buttons-container">
-    <a routerLink="/menu/edit/{{menu.id}}">Edit</a>
-
-    <button (click)="onDeleteClicked(menu.id)">Delete</button>
+  <div class="container">
+    <aside>
+      <h3>Menu Types</h3>
+      <ul>
+        <li (click)="filterMenus('All')">All</li>
+        <li (click)="filterMenus('Appetizers')">Appetizers</li>
+        <li (click)="filterMenus('Main Course')">Main Course</li>
+        <li (click)="filterMenus('Desserts')">Desserts</li>
+        <li (click)="filterMenus('Beverages')">Beverages</li>
+      </ul>
+    </aside>
+    <div class="menu-list">
+      <router-outlet>
+      </router-outlet>
+  
+      <figure *ngIf="isLoading">
+        <img src="" alt="Loading">
+        <figcaption>Loading...</figcaption>
+      </figure>
+  
+      <div class="content-box" *ngFor="let menu of filteredMenus">
+        <img [src]="'assets/Images/' + menu.image" alt="{{ menu.name }} Image">
+        <h5>{{ menu.name }}</h5>
+        <p>Price: £{{ menu.price }}</p>
+        <p>Type: {{ menu.type}}</p>
+        <p>Entry Date: {{ menu.dateEntry}}</p>
+        <div class="buttons-container">
+          <a routerLink="/menu/edit/{{ menu.id }}">Edit</a>
+          <button id="deleteBtn" (click)="onDeleteClicked(menu.id)">Delete</button>
+        </div>
+      </div>
+    </div>
   </div>
-
-</div>
-
+</section>

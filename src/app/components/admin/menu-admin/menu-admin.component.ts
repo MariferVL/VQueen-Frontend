@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { AdminService } from '../../../services/admin.service';
 import { Product } from '../../../types';
@@ -12,6 +13,9 @@ import { Product } from '../../../types';
 export class MenuAdminComponent implements OnInit, OnDestroy {
   isLoading: boolean = true;
   menus: Product[] = [];
+  filteredMenus: Product[] = [];
+  selectedMenuType: string | null = null;
+  faArrowLeft = faArrowLeft;
   private subscription: Subscription = new Subscription;
 
   constructor(
@@ -24,8 +28,18 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
     this.subscription = this.adminService.getMenus()
       .subscribe(menus => {
         this.menus = menus;
+        this.filteredMenus = this.menus;
         this.isLoading = false;
       });
+  }
+
+  filterMenus(menuType: string): void {
+    this.selectedMenuType = menuType;
+    if (menuType === 'All') {
+      this.filteredMenus = this.menus;
+    } else {
+      this.filteredMenus = this.menus.filter(menu => menu.type === menuType);
+    }
   }
 
   ngOnDestroy(): void {
