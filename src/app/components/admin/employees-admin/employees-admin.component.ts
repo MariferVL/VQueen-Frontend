@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
+
 import { AdminService } from '../../../services/admin.service';
 import { User } from '../../../types';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { EmployeeModalComponent } from '../../modals/employee-modal/employee-modal.component';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-employees-admin',
