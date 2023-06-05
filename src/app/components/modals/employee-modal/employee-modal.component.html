@@ -1,1 +1,10 @@
-<p>employee-modal works!</p>
+<div class="modal">
+  <section class="modal-content">
+    <h2>Add New Member</h2>
+    <button class="closeButton" (click)="close()">&times;</button>
+    <app-employee-form 
+      buttonText="Add Member"
+      (onSubmit)="submitForm($event)"
+    ></app-employee-form>
+  </section>
+</div>
