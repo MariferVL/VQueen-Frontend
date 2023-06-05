@@ -9,8 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./manager.component.css']
 })
 export class ManagerComponent implements OnInit, OnDestroy {
-  userRole: string = '';
-  title: string = 'Welcome, VG Manager';
+  title: string = 'V Queen Management';
   private subscription: Subscription | undefined;
 
   constructor(
