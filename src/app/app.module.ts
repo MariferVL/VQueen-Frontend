@@ -36,6 +36,8 @@ import { ReadyToServeComponent } from './components/kitchen/ready-to-serve/ready
 import { AdminService } from './services/admin.service';
 import { OrderService } from './services/order.service';
 import { LoginComponent } from './components/login/login/login.component';
+import { EmployeeModalComponent } from './components/modals/employee-modal/employee-modal.component';
+import { MenuModalComponent } from './components/modals/menu-modal/menu-modal.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import { LoginComponent } from './components/login/login/login.component';
     ReadyToServeComponent,
     UsernameModalComponent,
     LoginComponent,
+    EmployeeModalComponent,
+    MenuModalComponent,
  
   ],
   imports: [
