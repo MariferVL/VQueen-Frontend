@@ -38,6 +38,7 @@ import { OrderService } from './services/order.service';
 import { LoginComponent } from './components/login/login/login.component';
 import { EmployeeModalComponent } from './components/modals/employee-modal/employee-modal.component';
 import { MenuModalComponent } from './components/modals/menu-modal/menu-modal.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { MenuModalComponent } from './components/modals/menu-modal/menu-modal.co
     MatDialogModule,
     FormsModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    FontAwesomeModule
   ],
   providers: [
     AuthService,
