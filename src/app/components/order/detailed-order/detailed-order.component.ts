@@ -72,14 +72,9 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
   checkCustomerName(): void {
     const storedName = localStorage.getItem('customerName');
     if (storedName) {
-      console.log('entró a if');
-
       this.customerName = storedName;
-      console.log('this.customerName: ', this.customerName);
 
     } else {
-      console.log('entró a else');
-
       this.openModal();
     }
   }

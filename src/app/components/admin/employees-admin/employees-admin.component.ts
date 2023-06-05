@@ -1,8 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { AdminService } from '../../../services/admin.service';
 import { User } from '../../../types';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { EmployeeModalComponent } from '../../modals/employee-modal/employee-modal.component';
+
 
 @Component({
   selector: 'app-employees-admin',
@@ -13,11 +16,15 @@ export class EmployeesAdminComponent implements OnInit, OnDestroy {
 
   isLoading: boolean = true;
   employees: User[] = [];
+  filteredEmployees: User[] = [];
+  selectedRole: string | null = null;
   private subscription: Subscription = new Subscription;
 
   constructor(
     private titleService: Title,
     private adminService: AdminService,
+    public dialog: MatDialog,
+
   ) { }
 
   ngOnInit(): void {
@@ -26,12 +33,19 @@ export class EmployeesAdminComponent implements OnInit, OnDestroy {
       .subscribe(employees => {
         this.employees = employees;
         this.isLoading = false;
+        this.filteredEmployees = this.employees; 
       });
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    this.subscription.unsubscribe();
+  }
+
+  filterEmployees(role: string): void {
+    if (role === 'all') {
+      this.filteredEmployees = this.employees; 
+    } else {
+      this.filteredEmployees = this.employees.filter(employee => employee.role === role); 
     }
   }
 
@@ -39,6 +53,25 @@ export class EmployeesAdminComponent implements OnInit, OnDestroy {
     this.adminService.deleteUser(employeeId)
       .subscribe(() => {
         this.employees = this.employees.filter(employee => employee.id !== employeeId);
+        this.filteredEmployees = this.filteredEmployees.filter(employee => employee.id !== employeeId);
       });
+  }
+
+  onSubmit(): void {
+    const addEmployeeRef: MatDialogRef<EmployeeModalComponent> =  this.dialog.open(EmployeeModalComponent, {
+      width: '800px',
+      data: { employees: this.employees },
+    });
+
+    addEmployeeRef.afterClosed().subscribe((data) => {
+      if (data) {
+        this.subscription = this.adminService.addUser(data[0], data[1], data[2], data[3]).subscribe(() => {
+          console.log('Adding a new member.👑');
+          console.log(data[0], data[1], data[2], data[3]);
+          this.employees.push({ id: data[0], email: data[1], password: data[2], role: data[3] });
+          this.filteredEmployees.push({ id: data[0], email: data[1], password: data[2], role: data[3] });
+        });
+      }
+    });
   }
 }

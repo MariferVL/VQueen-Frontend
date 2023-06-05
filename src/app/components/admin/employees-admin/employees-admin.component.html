@@ -1,26 +1,36 @@
-<section id="employeesAdmin" class="bg-image">
+<section id="employeesAdmin">
   <h2>Employees Management</h2>
-  <a routerLink="/member/add-member">
-    <button>Add New Member</button>
-  </a>
-  <router-outlet></router-outlet>
-  
-  <figure *ngIf="isLoading">
-    <img src="" alt="Loading">
-    <figcaption>Loading...</figcaption>
-  </figure>
-  
-  <div class="content-box" *ngFor="let employee of employees">
-    <h3>{{ employee.id }}</h3>
-    <p>Email: {{employee.email}}</p>
-    <p>Password: £{{ employee.password }}</p>
-    <p>Role: {{employee.role}}</p>
-    <div class="buttons-container">
-      <a routerLink="/member/edit/{{employee.id}}">Edit</a>
-  
-      <button (click)="onDeleteClicked(employee.id)">Delete</button>
-    </div>
-  
-  </div>
+  <button (click)="onSubmit()">Add New Member</button>
 
+  <div class="container"> 
+    <aside>
+      <h3>Filter by Role</h3>
+      <ul>
+        <li (click)="filterEmployees('all')">All</li>
+        <li (click)="filterEmployees('chef')">Chef</li>
+        <li (click)="filterEmployees('colab')">Colab</li>
+        <li (click)="filterEmployees('client')">Client</li>
+        <li (click)="filterEmployees('admin')">Admin</li>
+      </ul>
+    </aside>
+
+    <div class="employee-list">
+      <router-outlet></router-outlet>
+
+      <figure *ngIf="isLoading">
+        <img src="" alt="Loading">
+        <figcaption>Loading...</figcaption>
+      </figure>
+
+      <div class="content-box" *ngFor="let employee of filteredEmployees">
+        <h3><strong>ID:</strong> {{ employee.id }}</h3>
+        <p><strong>Email:</strong> {{ employee.email }}</p>
+        <p><strong>Role:</strong> {{ employee.role }}</p>        
+        <div class="buttons-container">
+          <a routerLink="/member/edit/{{ employee.id }}">Edit</a>
+          <button id="deleteBtn" (click)="onDeleteClicked(employee.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

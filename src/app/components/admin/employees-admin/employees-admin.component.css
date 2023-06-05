@@ -1,0 +1,148 @@
+/* Mobile First Styles */
+#employeesAdmin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #16250548;
+  }
+
+  h2 {
+    color: white;
+    font-weight: bolder;
+    margin: 3rem;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-bottom: 8rem;
+  }
+  
+  
+  h3 {
+    margin-bottom: 1rem;
+  }
+  
+  aside {
+    background-color: #ffffffd9;
+    color: #AE8625;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-right: 0.5rem;
+    position: sticky;
+    top: 1rem;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    cursor: pointer;
+    padding: 0.5rem;
+    font-weight: bolder;
+  }
+  
+  li:hover {
+    background-color: #e2ca8780;
+  }
+  
+  .employee-list {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  button, a {
+    background-color: #AE8625;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    text-decoration: none;
+  }
+
+  #deleteBtn {
+    background-color: white;
+    color: #AE8625;
+    border-color: #AE8625;
+  }
+  
+  #deleteBtn:hover {
+    background-color: #e7bf54d6;
+    color: #fff;
+  }
+
+  button:hover, a:hover, #deleteBtn:hover {
+    background-color: #e7bf54d6;
+  }
+  
+  figure {
+    margin: 1rem;
+  }
+  
+  .content-box {
+    background-color: #ffffffd9;
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    flex-basis: calc(100% - 1rem);
+    max-width: calc(100% - 1rem);
+    text-align: left;
+  }
+  
+  .content-box h3 {
+    color: #2D4B08;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .content-box p {
+    color: #162505;
+    margin-bottom: 0.5rem;
+  }
+  
+  .buttons-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Tablet Styles (Vertical and Horizontal) */
+  @media only screen and (min-width: 600px) {
+    .container {
+      align-items: flex-start;
+    }
+  
+    aside {
+      position: sticky;
+      top: 1rem;
+    }
+  
+    .employee-list {
+      justify-content: flex-start;
+    }
+  
+    .content-box {
+      flex-basis: calc(50% - 1rem);
+      max-width: calc(50% - 1rem);
+    }
+  }
+  
+  /* Laptop Styles */
+  @media only screen and (min-width: 1024px) {
+    #employeesAdmin {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
+  
