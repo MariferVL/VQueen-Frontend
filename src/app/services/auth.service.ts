@@ -50,6 +50,8 @@ export class AuthService {
     });
   }
 
+  
+
   /**
    * Set and emit the user role.
    * @param userRole 
@@ -59,6 +61,7 @@ export class AuthService {
     return new Promise<void>((resolve) => {
       this.userRole = userRole;
       this.userRoleChanged.emit(userRole); 
+      localStorage.setItem('userRole', this.userRole);
       resolve();
     });
   }
@@ -68,8 +71,9 @@ export class AuthService {
    * @returns boolean
    */
   hasRole(role: string): boolean {
-    console.log('this.userRole: ', this.userRole);
-    return this.userRole === role;
+    const userRole = localStorage.getItem('userRole');
+    console.log('userRole: ', userRole);
+    return userRole === role;
   }
 
   
@@ -83,6 +87,7 @@ export class AuthService {
   logout(): void {   
     this.accessToken = '';
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('userRole');
     this.router.navigate(['/home']);
   }
 }
