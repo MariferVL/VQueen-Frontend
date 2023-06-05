@@ -71,6 +71,27 @@
     text-decoration: none;
   }
 
+  .back {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    font-size: 3rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    position: absolute;
+    left: 3rem;
+  }
+
+  .back:hover {
+    background-color: transparent;
+    color: #a48149;
+    font-size: 4rem;
+
+  }
+
+
   #deleteBtn {
     background-color: white;
     color: #AE8625;
@@ -144,5 +165,10 @@
       max-width: 1200px;
       margin: 0 auto;
     }
+
+    .content-box {
+        flex-basis: calc(33% - 1rem);
+        max-width: calc(33% - 1rem);
+      }
   }
   

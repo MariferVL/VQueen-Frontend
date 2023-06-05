@@ -5,7 +5,7 @@ import { AdminService } from '../../../services/admin.service';
 import { User } from '../../../types';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { EmployeeModalComponent } from '../../modals/employee-modal/employee-modal.component';
-
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-employees-admin',
@@ -18,6 +18,7 @@ export class EmployeesAdminComponent implements OnInit, OnDestroy {
   employees: User[] = [];
   filteredEmployees: User[] = [];
   selectedRole: string | null = null;
+  faArrowLeft = faArrowLeft;
   private subscription: Subscription = new Subscription;
 
   constructor(

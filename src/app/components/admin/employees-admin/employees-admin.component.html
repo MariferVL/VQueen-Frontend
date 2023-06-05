@@ -1,8 +1,10 @@
 <section id="employeesAdmin">
   <h2>Employees Management</h2>
   <button (click)="onSubmit()">Add New Member</button>
-
-  <div class="container"> 
+  <button class="back" routerLink="/admin">
+    <fa-icon [icon]="faArrowLeft"></fa-icon>
+  </button>
+  <div class="container">
     <aside>
       <h3>Filter by Role</h3>
       <ul>
@@ -25,12 +27,14 @@
       <div class="content-box" *ngFor="let employee of filteredEmployees">
         <h3><strong>ID:</strong> {{ employee.id }}</h3>
         <p><strong>Email:</strong> {{ employee.email }}</p>
-        <p><strong>Role:</strong> {{ employee.role }}</p>        
+        <p><strong>Role:</strong> {{ employee.role }}</p>
         <div class="buttons-container">
           <a routerLink="/member/edit/{{ employee.id }}">Edit</a>
           <button id="deleteBtn" (click)="onDeleteClicked(employee.id)">Delete</button>
         </div>
       </div>
+
     </div>
   </div>
+
 </section>
