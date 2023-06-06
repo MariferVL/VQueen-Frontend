@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080';
+  public apiUrl = 'http://localhost:8080';
   accessToken: string = '';
   private userRole: string = '';
   userRoleChanged: EventEmitter<string> = new EventEmitter<string>();
@@ -16,7 +16,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private router: Router) { 
+    public router: Router) { 
       const token = localStorage.getItem('accessToken');
       if (token) {
         this.accessToken = token;
