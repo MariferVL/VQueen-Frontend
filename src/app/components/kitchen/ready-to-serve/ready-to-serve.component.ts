@@ -87,7 +87,6 @@ export class ReadyToServeComponent implements OnInit {
 
   }
 
-
   /**
    * Remove the served order from the readyOrders array
    * @param order 
