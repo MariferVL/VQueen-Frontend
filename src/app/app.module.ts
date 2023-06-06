@@ -24,10 +24,8 @@ import { EmployeesAdminComponent } from './components/admin/employees-admin/empl
 import { EditEmployeeComponent } from './components/admin/edit-employee/edit-employee.component';
 import { EditMenuComponent } from './components/admin/edit-menu/edit-menu.component';
 import { NotFoundComponent } from './components/extras/not-found/not-found.component';
-import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { MenuFormComponent } from './components/forms/menu-form/menu-form.component';
 import { ColabMainComponent } from './components/colab/colab-main/colab-main.component';
-import { AddEmployeeComponent } from './components/admin/add-employee/add-employee.component';
 import { EmployeeFormComponent } from './components/forms/employee-form/employee-form.component';
 import { ColabOrdersComponent } from './components/colab/colab-orders/colab-orders.component';
 import { AuthService } from './services/auth.service';
@@ -43,8 +41,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
-    AddEmployeeComponent,
-    AddProductComponent,
     ContactComponent,   
     ColabMainComponent,
     ColabOrdersComponent,

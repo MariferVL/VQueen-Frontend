@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { AdminService } from '../../../services/admin.service';
 import { Product } from '../../../interfaces/types';
+import { MenuModalComponent } from '../../modals/menu-modal/menu-modal.component';
 
 @Component({
   selector: 'app-menu-admin',
@@ -16,11 +18,14 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
   filteredMenus: Product[] = [];
   selectedMenuType: string | null = null;
   faArrowLeft = faArrowLeft;
+  
   private subscription: Subscription = new Subscription;
 
   constructor(
     private titleService: Title,
     private adminService: AdminService,
+    public dialog: MatDialog,
+
   ) { }
 
   ngOnInit(): void {
@@ -42,16 +47,36 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+  onSubmit(): void {
+    const addMenuRef: MatDialogRef<MenuModalComponent> =  this.dialog.open(MenuModalComponent, {
+      width: '800px',
+      data: { menus: this.menus },
+    });
+
+    addMenuRef.afterClosed().subscribe((data) => {
+      if (data) {
+        this.subscription = this.adminService.createMenu(data[0], data[1], data[2], data[3], data[4], data[5]).subscribe(() => {
+          console.log('Adding a new member.👑');
+          console.log(data[0], data[1], data[2], data[3], data[4], data[5]);
+          this.menus.push({ id: data[0],name: data[1],price: data[2],image: data[3],type: data[4],dateEntry: data[5] });
+          this.filteredMenus = this.menus;
+
+        });
+      }
+    });
   }
+
 
   onDeleteClicked(menuId: number): void {
     this.adminService.deleteMenu(menuId)
       .subscribe(() => {
         this.menus = this.menus.filter(menu => menu.id !== menuId);
       });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

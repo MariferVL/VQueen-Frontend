@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -71,7 +71,7 @@ export class EmployeesAdminComponent implements OnInit, OnDestroy {
           console.log('Adding a new member.👑');
           console.log(data[0], data[1], data[2], data[3]);
           this.employees.push({ id: data[0], email: data[1], password: data[2], role: data[3] });
-          this.filteredEmployees.push({ id: data[0], email: data[1], password: data[2], role: data[3] });
+          this.filteredEmployees = this.employees; 
         });
       }
     });

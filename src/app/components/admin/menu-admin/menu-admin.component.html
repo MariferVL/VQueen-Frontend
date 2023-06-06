@@ -1,8 +1,6 @@
 <section id="menuManagement">
   <h2>Menu Management</h2>
-  <a routerLink="/menu/add-product">
-    <button>Add New Product</button>
-  </a>
+  <button (click)="onSubmit()">Add New Product</button>
   <button class="back" routerLink="/admin">
     <fa-icon [icon]="faArrowLeft"></fa-icon>
   </button>

@@ -1,1 +1,10 @@
-<p>menu-modal works!</p>
+<div class="modal">
+    <section class="modal-content">
+        <h2>Add New Product</h2>
+        <button class="closeButton" (click)="close()">&times;</button>
+        <app-menu-form 
+        buttonText="Add Product"
+        (onSubmit)="onSubmit($event)"
+        ></app-menu-form>
+    </section>
+</div>
