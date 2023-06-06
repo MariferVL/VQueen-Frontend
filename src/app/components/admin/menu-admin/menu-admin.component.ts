@@ -19,7 +19,7 @@ export class MenuAdminComponent implements OnInit, OnDestroy {
   selectedMenuType: string | null = null;
   faArrowLeft = faArrowLeft;
   
-  private subscription: Subscription = new Subscription;
+  subscription: Subscription = new Subscription;
 
   constructor(
     private titleService: Title,
