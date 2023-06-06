@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { MenuAdminComponent } from './menu-admin.component';
 import { AdminService } from '../../../services/admin.service';
@@ -19,6 +19,7 @@ describe('MenuAdminComponent', () => {
     const mockDialog = jasmine.createSpyObj('MatDialog', ['open']);
 
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule], 
       declarations: [MenuAdminComponent],
       providers: [
         Title,
@@ -34,17 +35,14 @@ describe('MenuAdminComponent', () => {
   });
 
   beforeEach(() => {
-    // Mock the response for getMenus
     const mockMenus: Product[] = [
       { id: 1, name: 'Menu 1', price: 10, image: 'image1.jpg', type: 'Type 1', dateEntry: '2022-01-01' },
       { id: 2, name: 'Menu 2', price: 20, image: 'image2.jpg', type: 'Type 2', dateEntry: '2022-01-02' }
     ];
     adminServiceMock.getMenus.and.returnValue(of(mockMenus));
 
-    // Mock the response for createMenu
     adminServiceMock.createMenu.and.returnValue(of(null as any));
 
-    // Mock the response for deleteMenu
     adminServiceMock.deleteMenu.and.returnValue(of(null));
   });
 
@@ -115,6 +113,5 @@ describe('MenuAdminComponent', () => {
     expect(component.subscription.unsubscribe).toHaveBeenCalled();
   });
 
-  // Add more test cases to cover other scenarios...
 
 });
