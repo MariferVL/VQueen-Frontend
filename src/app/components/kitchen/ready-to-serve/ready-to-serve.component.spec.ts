@@ -11,7 +11,6 @@ describe('ReadyToServeComponent', () => {
   let fixture: ComponentFixture<ReadyToServeComponent>;
   let titleService: Title;
   let orderService: jasmine.SpyObj<OrderService>;
-  let authService: jasmine.SpyObj<AuthService>;
 
 const orders: Order[] = [
   {
@@ -58,7 +57,6 @@ const orders: Order[] = [
     component = fixture.componentInstance;
     titleService = TestBed.inject(Title);
     orderService = TestBed.inject(OrderService) as jasmine.SpyObj<OrderService>;
-    authService = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
   });
 
   beforeEach(() => {
