@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class OrderService {
-  private apiUrl = 'http://localhost:8080';
+  public apiUrl = 'http://localhost:8080';
   selectedProducts: ProductWithQty[] = [];
   private customerName: string = '';
 
@@ -19,7 +19,7 @@ export class OrderService {
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService,
+    public authService: AuthService,
   ) { 
     
   }
@@ -152,7 +152,4 @@ export class OrderService {
     return this.http.delete(`${this.apiUrl}/orders/${id}`,
       this.httpOptions)
   }
-
-
-
 }
