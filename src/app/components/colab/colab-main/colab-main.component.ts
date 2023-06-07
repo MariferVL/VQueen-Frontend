@@ -13,7 +13,7 @@ export class ColabMainComponent implements OnInit, OnDestroy {
   password: string = '';
   showPassword: boolean = false;
   userID: number = 0;
-  private subscription: Subscription | undefined;
+  subscription: Subscription | undefined;
 
   constructor(
     private titleService: Title,
