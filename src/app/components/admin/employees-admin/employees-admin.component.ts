@@ -20,7 +20,7 @@ export class EmployeesAdminComponent implements OnInit, OnDestroy {
   filteredEmployees: User[] = [];
   selectedRole: string | null = null;
   faArrowLeft = faArrowLeft;
-  private subscription: Subscription = new Subscription;
+  subscription: Subscription = new Subscription;
 
   constructor(
     private titleService: Title,
@@ -68,8 +68,6 @@ export class EmployeesAdminComponent implements OnInit, OnDestroy {
     addEmployeeRef.afterClosed().subscribe((data) => {
       if (data) {
         this.subscription = this.adminService.addUser(data[0], data[1], data[2], data[3]).subscribe(() => {
-          console.log('Adding a new member.👑');
-          console.log(data[0], data[1], data[2], data[3]);
           this.employees.push({ id: data[0], email: data[1], password: data[2], role: data[3] });
           this.filteredEmployees = this.employees; 
         });
