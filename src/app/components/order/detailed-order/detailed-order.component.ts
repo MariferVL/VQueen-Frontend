@@ -168,7 +168,6 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
       data: { products: this.selectedProducts },
     });
 
-    //TODO: Pendiente adaptar html para llamar metodo
     confirmRef.afterClosed().subscribe((result) => {
       if (result === 'confirm') {
         this.orderNum = this.generateOrderNumber();
@@ -197,14 +196,11 @@ export class DetailedOrderComponent implements OnInit, OnDestroy {
    */
   cancelOrder() {
     this.orderService.clearOrder();
-    this.router.navigateByUrl('/order-received');
+    this.router.navigateByUrl('/home');
   }
 
 
 }
-
-  //TODO: Show this message while the food is being cooked.
-  // alert('🍽️ **Exciting News! Your Food Order is Being Prepared!** 🎉 \n Your order is in safe hands! Our skilled team is meticulously selecting the freshest ingredients to craft your culinary masterpiece. 🌱🥦🍅 \nBehind the scenes, our talented chefs are passionately curating a symphony of flavors, ensuring that every bite exceeds your expectations. 🍽️✨\nGet ready to embark on a sensational gastronomic journey, where taste and quality unite to create an unforgettable dining experience. Bon appétit! 😊🍴')
 
 
 

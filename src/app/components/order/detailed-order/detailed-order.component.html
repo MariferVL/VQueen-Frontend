@@ -1,4 +1,4 @@
-<section class="bg-image">
+<section>
     <header>
         <h1>Order Details</h1>
     </header>
@@ -19,22 +19,22 @@
                     <td>{{ product.name }}</td>
                     <td>{{ product.price | currency }}</td>
                     <td><div class="product-qty">
-                        <button mat-icon-button (click)="increaseQty(i)">
+                        <button id="add" mat-icon-button (click)="increaseQty(i)">
                             <mat-icon>+</mat-icon>
                           </button>
-                        <input type="number" [value]="product.qty" [(ngModel)]="product.qty" min="1" step="1">
-                        <button mat-icon-button (click)="decreaseQty(i)">
+                        <input type="text" [value]="product.qty" [(ngModel)]="product.qty" min="1" step="1">
+                        <button id="rest" mat-icon-button (click)="decreaseQty(i)">
                             <mat-icon>-</mat-icon>
                           </button>
                       </div></td>
-                    <td><button (click)="removeProduct(i)">Remove</button></td>
+                    <td><button class="delete" (click)="removeProduct(i)">Remove</button></td>
                 </tr>
             </table>
             <p>Total: {{ calculateTotal() | currency }}</p>
             <p>Tip (10%): {{ calculateTip(calculateTotal(), 10) | currency }}</p>
             <button routerLink="/vq-menu">Add More Products</button>
             <button (click)="confirmOrder()">Send Order</button>
-            <button (click)="cancelOrder()">Delete Order</button>
+            <button class="delete" (click)="cancelOrder()">Delete Order</button>
     
         </article>
     </main>
