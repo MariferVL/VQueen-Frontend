@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomeComponent {
   logoImg: string = 'assets/Images/vqlogo.png'; 
-  private autoLoginSubs: Subscription | undefined;
+  autoLoginSubs: Subscription | undefined;
   
   constructor(
     private router: Router,
@@ -32,13 +32,10 @@ export class HomeComponent {
   autoLogin(): void {
     this.autoLoginSubs = this.authService.autoLogin().subscribe({
       next: () => {
-        // Login successful
         this.router.navigateByUrl('/vq-menu');
       },
       error: (error: any) => {
-        // Error occurred during login
         console.error(error);
-        // Handle the error, such as displaying an error message to the user
       }
     });
   }
