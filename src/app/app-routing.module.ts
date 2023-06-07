@@ -5,7 +5,6 @@ import { MenuComponent } from './components/menu/menu/menu.component';
 import { DetailedMenuComponent } from './components/menu/detailed-menu/detailed-menu.component';
 import { DetailedOrderComponent } from './components/order/detailed-order/detailed-order.component';
 import { KitchenComponent } from './components/kitchen/kitchen/kitchen.component';
-import { LocationsComponent } from './components/extras/locations/locations.component';
 import { OrderReceivedComponent } from './components/order/order-received/order-received.component';
 import { ManagerComponent } from './components/admin/manager/manager.component';
 import { EmployeesAdminComponent } from './components/admin/employees-admin/employees-admin.component';
@@ -26,7 +25,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
   { path: 'kitchen', component: KitchenComponent,canActivate: [authKitchenGuard] },
-  { path: 'locations', component: LocationsComponent },
   { path: 'vq-menu', component: MenuComponent },
   { path: 'vq-menu/:id', component: DetailedMenuComponent },
   { path: 'order', component: DetailedOrderComponent },

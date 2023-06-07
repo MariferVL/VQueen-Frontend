@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -13,8 +12,6 @@ import { MenuComponent } from './components/menu/menu/menu.component';
 import { DetailedMenuComponent } from './components/menu/detailed-menu/detailed-menu.component';
 import { DetailedOrderComponent } from './components/order/detailed-order/detailed-order.component';
 import { KitchenComponent } from './components/kitchen/kitchen/kitchen.component';
-import { LocationsComponent } from './components/extras/locations/locations.component';
-import { ContactComponent } from './components/extras/contact/contact.component';
 import { UsernameModalComponent } from './components/modals/username-modal/username-modal.component';
 import { OrderModalComponent } from './components/modals/order-modal/order-modal.component';
 import { OrderReceivedComponent } from './components/order/order-received/order-received.component';
@@ -41,7 +38,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
-    ContactComponent,   
     ColabMainComponent,
     ColabOrdersComponent,
     DetailedMenuComponent,
@@ -52,7 +48,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     EmployeesAdminComponent,
     HomeComponent,
     KitchenComponent,
-    LocationsComponent,
     LoginFormComponent,
     ManagerComponent,
     MenuAdminComponent,
