@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { AdminService } from '../../../services/admin.service';
 import { OrderService } from '../../../services/order.service';
@@ -24,7 +25,7 @@ export class DetailedMenuComponent implements OnInit, OnDestroy {
   };
   foodImg: string = 'assets/Images/';
   private subscription: Subscription = new Subscription;
-
+  faArrowLeft = faArrowLeft;
   constructor(
     private route: ActivatedRoute,
     private adminService: AdminService,

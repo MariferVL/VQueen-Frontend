@@ -1,22 +1,23 @@
-<section id="detailedMenu" class="bg-image">
-  <h1 class="heading">Zoom the Menu, Taste the Dream:<br>Flavor's Just a Click away,<br>it'll Make You Scream!
-  </h1>
-
-  <article *ngIf="menu && !isLoading">
+<section id="detailedMenu" >
+  <h1 class="heading">Zoom the Menu, Taste the Dream:</h1>
+  <h4>Flavor's Just a Click away,it'll Make You Scream!</h4>
+  <button class="back" routerLink="/admin">
+    <fa-icon [icon]="faArrowLeft"></fa-icon>
+  </button>
+  <article id="product" *ngIf="menu && !isLoading">
     <h3>{{menu.name}}</h3>
     <figure>
       <img [src]="foodImg" alt="{{menu.name}}" class="foodImg">
-      <figcaption>Image:{{menu.name}}</figcaption>
+      <figcaption>Image: {{menu.name}}</figcaption>
     </figure>
     <section class="details">
       <article>
-        <h5>Price:</h5>
-        <p>£{{menu.price}}</p>
+        <h5>Price: £{{menu.price}}</h5>
       </article>
     </section>
     <footer>
       <a routerLink="/order" (click)="selectProduct(menu)">Want It</a>
-      <a routerLink="/menu">Back</a>
+      <a routerLink="/vq-menu">Back</a>
     </footer>
   </article>
 

@@ -1,75 +1,104 @@
 #detailedMenu {
-  padding: 4rem;
+  color: white;
+  font-family: 'Crimson Text', sans-serif;
   text-align: center;
-  color: #fff;
+  padding: 50px;
+
 }
 
-#detailedMenu .heading {
-  font-size: 3rem;
-  line-height: 1.5;
-  margin-bottom: 2rem;
+.foodImg {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
 }
 
-#detailedMenu .menu-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2rem;
-  justify-items: center;
-  margin-top: 2rem;
+.details {
+  margin-bottom: 40px;
 }
 
-#detailedMenu .menu-item {
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 0.5rem;
-  padding: 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+h5 {
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
-#detailedMenu .menu-item figure {
-  margin-bottom: 1.5rem;
+footer {
+  margin-top: 40px;
 }
 
-#detailedMenu .menu-item .foodImg {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 0.5rem;
-}
-
-#detailedMenu .menu-item figcaption {
-  font-size: 1.2rem;
-  color: #555;
-}
-
-#detailedMenu .menu-item .details {
-  margin-bottom: 1.5rem;
-}
-
-#detailedMenu .menu-item h5 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-#detailedMenu .menu-item p {
-  font-size: 1.2rem;
-  color: #555;
-}
-
-#detailedMenu .menu-item footer {
-  margin-top: 1.5rem;
-}
-
-#detailedMenu .menu-item footer a {
+button,
+a {
   display: inline-block;
-  padding: 0.5rem 1rem;
   background-color: #AE8625;
   color: #fff;
-  text-decoration: none;
+  border: none;
   border-radius: 0.5rem;
-  transition: background-color 0.3s ease;
-  margin-right: 1rem;
+  font-weight: bold;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  margin: 1rem;
+  text-decoration: none;
 }
 
-#detailedMenu .menu-item footer a:hover {
-  background-color: #D2AC47;
+button:hover,
+a:hover {
+  background-color: #e9c666d6;
+}
+
+.back {
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  font-size: 3rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  position: absolute;
+  left: 3rem;
+}
+
+.back:hover {
+  background-color: transparent;
+  color: #a48149;
+  font-size: 4rem;
+}
+
+#product {
+  margin: 3rem 0;
+}
+
+/* Media Queries */
+
+/* Tablet - Horizontal Orientation */
+@media (min-width: 768px) and (orientation: landscape) {
+  .foodImg {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+/* Tablet - Vertical Orientation */
+@media (min-width: 768px) and (orientation: portrait) {
+  .foodImg {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+/* Laptops */
+@media (min-width: 1024px) {
+  .foodImg {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+/* Smart TVs */
+@media (min-width: 1920px) {
+  .foodImg {
+    width: 600px;
+    height: 600px;
+  }
 }
