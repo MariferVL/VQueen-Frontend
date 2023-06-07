@@ -12,7 +12,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Display each meal in the order -->
         <tr *ngFor="let product of products" class="meal-item">
           <td>{{ product.name }}</td>
           <td>{{ product.qty }}</td>
@@ -23,8 +22,7 @@
 
     <p class="modal-info">Final Total: {{ calculateFinalTotal() | currency }}</p>
     <p class="modal-info">Tip (10%): {{ calculateTip(calculateFinalTotal(), 10) | currency }}</p>
-    <p class="modal-info">Total + Tip: {{ calculateTip(calculateFinalTotal(), 10) +  calculateFinalTotal()| currency }}</p>
-
+    <p class="modal-info">Total + Tip: {{ calculateTip(calculateFinalTotal(), 10) + calculateFinalTotal() | currency }}</p>
 
     <div class="modal-buttons">
       <button (click)="submitOrder()" class="confirm-button">Let the Feast Begin!</button>

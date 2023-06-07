@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Base Styles */
+section {
+    text-align: center;
+    padding: 40px;
+    margin: 8rem auto;
+    max-width: 47rem;    
+    font-family: 'Roboto', sans-serif;
+
+}
+
+h2 {
+    color: white;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+h5 {
+    color: transparent;
+    font-size: 16px;
+    margin: 8rem;
+}
+
+a.btn {
+    display: inline-block;
+    background-color: #D2AC47;
+    color: #162505;
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 14rem;
+}
+
+/* Media Queries */
+@media only screen and (min-width: 480px) {
+
+    /* For landscape orientation tablets and larger mobile screens */
+    h2 {
+        font-size: 32px;
+    }
+
+    h5 {
+        font-size: 20px;
+    }
+
+    a.btn {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    /* For tablets */
+    section {
+        padding: 60px;
+    }
+
+    h2 {
+        font-size: 36px;
+    }
+
+    h5 {
+        font-size: 24px;
+    }
+
+    a.btn {
+        font-size: 22px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+
+    /* For laptops and desktops */
+    section {
+        padding: 80px;
+    }
+
+    h2 {
+        font-size: 42px;
+    }
+
+    h5 {
+        font-size: 28px;
+    }
+
+    a.btn {
+        font-size: 24px;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+
+    /* For smart TVs */
+    section {
+        padding: 100px;
+    }
+
+    h2 {
+        font-size: 48px;
+    }
+
+    h5 {
+        font-size: 32px;
+    }
+
+    a.btn {
+        font-size: 28px;
+    }
+}

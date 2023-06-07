@@ -27,5 +27,7 @@ body {
     background-color: rgba(0, 0, 0, 0.549); 
   }
   
-
+  .custom-checkbox:checked {
+    background-color: #AE8625;
+  }
 

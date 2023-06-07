@@ -53,3 +53,12 @@
 .card button:hover {
   background-color: #D2AC47;
 }
+
+input:focus {
+  border: 2px solid #AE8625;
+  outline:#AE8625; 
+}
+
+.custom-checkbox:checked {
+  background-color: #AE8625;
+}

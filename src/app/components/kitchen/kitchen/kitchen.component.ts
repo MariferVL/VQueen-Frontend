@@ -127,9 +127,9 @@ export class KitchenComponent implements OnInit {
 
   getOrderColor(entryDate: string, status: string): string {
     const minutesPassed = this.calculateTimeDif(entryDate);
-    if (status === 'sent' && minutesPassed >= 2) {
+    if (status === 'sent' && minutesPassed >= 9) {
       return 'taking-more-than-usual';
-    } else if (status === 'sent' && minutesPassed >= 1) {
+    } else if (status === 'sent' && minutesPassed >= 18) {
       return 'taking-too-long';
     } else if (status === 'sent') {
       return 'cooking-button';
