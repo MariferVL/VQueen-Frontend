@@ -1,6 +1,6 @@
 <section id="menuManagement">
   <h2>Menu Management</h2>
-  <button (click)="onSubmit()">Add New Product</button>
+  <button id="addBtn" (click)="onSubmit()">Add New Product</button>
   <button class="back" routerLink="/admin">
     <fa-icon [icon]="faArrowLeft"></fa-icon>
     <!-- <span>{{ faArrowLeft }}</span> -->
@@ -29,9 +29,9 @@
       <div class="content-box" *ngFor="let menu of filteredMenus">
         <img [src]="'assets/Images/' + menu.image" alt="{{ menu.name }} Image">
         <h5>{{ menu.name }}</h5>
-        <p>Price: £{{ menu.price }}</p>
-        <p>Type: {{ menu.type}}</p>
-        <p>Entry Date: {{ menu.dateEntry}}</p>
+        <p><span class="label">Price:</span> £{{ menu.price }}</p>
+        <p><span class="label">Type:</span> {{ menu.type}}</p>
+        <p><span class="label">Entry Date:</span> {{ menu.dateEntry}}</p>
         <div class="buttons-container">
           <a routerLink="/menu/edit/{{ menu.id }}">Edit</a>
           <button id="deleteBtn" (click)="onDeleteClicked(menu.id)">Delete</button>
