@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Product } from '../../../interfaces/types';
 import { AdminService } from '../../../services/admin.service';
 
@@ -11,10 +11,12 @@ import { AdminService } from '../../../services/admin.service';
 })
 export class EditMenuComponent implements OnInit {
   menu: Product | undefined;
+  currentUrl: string = '';
 
   constructor(
     private titleService: Title,
     private route: ActivatedRoute,
+    public router: Router,
     private adminService: AdminService,
   ) { }
 
@@ -24,18 +26,21 @@ export class EditMenuComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.adminService.getMenusById(id)
       .subscribe(menu => this.menu = menu);
+    
+    this.router.events.subscribe( event => {
+      if (event instanceof NavigationEnd) {
+        this.currentUrl = this.router.url
+      }
+    })
   }
 
   onSubmit({ name, price, image, type }:{ name: string, price: number, image: string, type: string }): void {
     if (this.menu) {
-      console.log('menu: ', this.menu.name, this.menu.price);
 
       this.adminService.editMenu(this.menu.id, name, price, image, type, this.menu.
         dateEntry)
         .subscribe(() => {
-          console.log('Saving changes');  
-          //TODO: Modificar       
-          window.location.href = '/menu';
+          this.router.navigateByUrl('/menu');
         });
     }
   }
