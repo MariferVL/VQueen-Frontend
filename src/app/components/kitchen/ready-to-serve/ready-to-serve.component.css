@@ -10,6 +10,40 @@
   justify-content: space-between;
 }
 
+.heading {
+  font-weight: bold;
+  color: white;
+  margin: 2rem 16rem 0 4rem;
+  text-transform: uppercase;
+  width: 40%;
+}
+
+.royal-style {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  margin: 0.5rem 6.5rem;
+  width: 40%;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.first-row>div:nth-child(2) {
+  margin: 0.5rem 6.5rem;
+}
+
+.column>h2:nth-child(1) {
+  margin: 2rem 16rem 0 2rem;
+}
+
+.column > div:nth-child(2) {
+  margin-left: 4.5rem;
+  }
+
 .order {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 10px;
@@ -46,10 +80,11 @@
     white-space: nowrap;
   }
 }
+
 /* @media (min-width: 768px) {
 
   /* Tablet styles */
-  /* .orders-container {
+/* .orders-container {
     flex-wrap: wrap;
   }
 

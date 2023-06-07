@@ -1,20 +1,40 @@
 <main role="main" class="table-background">
-    <div class="orders-container">
-      <section class="cooking-orders">
-        <div class="remaining-rows">
-          <div class="column">
-            <article class="order" *ngFor="let order of cookingOrders">
-              <div class="order-details">
-                <h2 class="customer-name">{{ order.client }}</h2>
-                <p class="order-number">Order #{{ order.id }}</p>
-              </div>
-            </article>
+  <div class="orders-container">
+    <section class="cooking-orders">
+      <div class="remaining-rows">
+        <div class="column">
+          <h2 class="heading">Orders in the Royal Kitchen</h2>
+          <div class="royal-style">
+            <p>The cooking kingdom is ablaze with culinary creations!</p>
+            <p>Witness the magic as our chefs conjure up delightful dishes.</p>
           </div>
+          <article class="order" *ngFor="let order of cookingOrders">
+            <div class="order-details">
+              <h2 class="customer-name">{{ order.client }}</h2>
+              <p class="order-number">Order #{{ order.id }}</p>
+            </div>
+          </article>
         </div>
-      </section>
-      <section class="ready-orders">
-        <div class="first-row">
-          <article class="order" *ngFor="let order of readyOrders.slice(0,1); let i = index;">
+      </div>
+    </section>
+    <section class="ready-orders">
+      <div class="first-row">
+        <h2 class="heading">Orders Fit for Royalty</h2>
+        <div class="royal-style">
+          <p>The royal feast awaits!</p>
+          <p>Indulge in the flavors fit for kings and queens.</p>
+        </div>
+        <article class="order" *ngFor="let order of readyOrders.slice(0,1); let i = index;">
+          <div class="order-details">
+            <h3 class="customer-name">{{ order.client }}</h3>
+            <p class="order-number">Order #{{ order.id }}</p>
+            <button class="delivered-button" (click)="markAsDelivered(order)">Delivered</button>
+          </div>
+        </article>
+      </div>
+      <div class="remaining-rows">
+        <div class="column" *ngFor="let order of readyOrders.slice(2,readyOrders.length-1); let i = index;">
+          <article class="order">
             <div class="order-details">
               <h3 class="customer-name">{{ order.client }}</h3>
               <p class="order-number">Order #{{ order.id }}</p>
@@ -22,18 +42,7 @@
             </div>
           </article>
         </div>
-        <div class="remaining-rows">
-          <div class="column" *ngFor="let order of readyOrders.slice(2,readyOrders.length-1); let i = index;">
-            <article class="order" >
-              <div class="order-details">
-                <h3 class="customer-name">{{ order.client }}</h3>
-                <p class="order-number">Order #{{ order.id }}</p>
-                <button class="delivered-button" (click)="markAsDelivered(order)">Delivered</button>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-    </div>
-  </main>
-  
+      </div>
+    </section>
+  </div>
+</main>
