@@ -1,19 +1,56 @@
 <section id="menu" class="content-box bg-image">
-    <h2>Our Menu</h2>
+  <h1>Our Menu</h1>
 
-    <figure *ngIf="isLoading">
-      <img src="" alt="Loading">
-      <figcaption>Loading...</figcaption>
-    </figure>
+  <figure *ngIf="isLoading">
+    <img src="" alt="Loading">
+    <figcaption>Loading...</figcaption>
+  </figure>
 
-    <ul *ngFor="let menu of menus">
-      <li id="{{menu.id}}">
-        <h4>{{menu.name}}</h4>
-        <span>£{{menu.price}}</span>
-        <a routerLink="/vq-menu/{{menu.id}}">Zoom It</a>
-        <a routerLink="/order" (click)="selectProduct(menu)">Want It</a>
+  <div class="menu-container">
+    <div class="column">
+      <h3>Appetizers</h3>
+      <ul>
+        <li id="{{menu.id}}" *ngFor="let menu of appetizers">
+          <span class="name">{{menu.name}}</span>
+          <span class="price">£ {{menu.price}}</span>
+          <a class="btn" routerLink="/vq-menu/{{menu.id}}">Zoom It</a>
+          <a class="btn" routerLink="/order" (click)="selectProduct(menu)">Want It</a>
+        </li>
+      </ul>
+    </div>
 
-      </li>
-    </ul>
+    <div class="column">
+      <h3>Main Course</h3>
+      <ul>
+        <li id="{{menu.id}}" *ngFor="let menu of mainCourses">
+          <span class="name">{{menu.name}}</span>
+          <span class="price">£ {{menu.price}}</span>
+          <a class="btn" routerLink="/vq-menu/{{menu.id}}">Zoom It</a>
+          <a class="btn" routerLink="/order" (click)="selectProduct(menu)">Want It</a>
+        </li>
+      </ul>
+    </div>
 
+    <div class="column">
+      <h3>Desserts</h3>
+      <ul>
+        <li id="{{menu.id}}" *ngFor="let menu of desserts">
+          <span class="name">{{menu.name}}</span>
+          <span class="price">£ {{menu.price}}</span>
+          <a class="btn" routerLink="/vq-menu/{{menu.id}}">Zoom It</a>
+          <a class="btn" routerLink="/order" (click)="selectProduct(menu)">Want It</a>
+        </li>
+      </ul>
+      <h3>Beverages</h3>
+      <ul>
+        <li id="{{menu.id}}" *ngFor="let menu of beverages">
+          <span class="name">{{menu.name}}</span>
+          <span class="price">£ {{menu.price}}</span>
+          <a class="btn" routerLink="/vq-menu/{{menu.id}}">Zoom It</a>
+          <a class="btn" routerLink="/order" (click)="selectProduct(menu)">Want It</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </section>
+

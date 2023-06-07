@@ -13,7 +13,10 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class MenuComponent implements OnInit, OnDestroy {
   isLoading: boolean = true;
-  menus: Product[] = [];
+  appetizers: Product[] = [];
+  mainCourses: Product[] = [];
+  desserts: Product[] = [];
+  beverages: Product[] = [];
   private subscription: Subscription = new Subscription;
 
   constructor(
@@ -26,7 +29,10 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.titleService.setTitle('VQ - Menu');
     this.subscription = this.adminService.getMenus()
       .subscribe(menus => {
-        this.menus = menus;
+        this.appetizers = menus.filter(menu => menu.type === 'Appetizers');
+        this.mainCourses = menus.filter(menu => menu.type === 'Main Course');
+        this.desserts = menus.filter(menu => menu.type === 'Desserts' );
+        this.beverages = menus.filter(menu => menu.type === 'Beverages');
         this.isLoading = false;
       });
   }
@@ -34,7 +40,6 @@ export class MenuComponent implements OnInit, OnDestroy {
   selectProduct(product: Product): void {
     this.orderService.addSelectedProduct(product);
   }
-
 
   ngOnDestroy() {
     if (this.subscription) {
