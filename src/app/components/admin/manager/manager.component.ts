@@ -9,7 +9,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./manager.component.css']
 })
 export class ManagerComponent implements OnInit, OnDestroy {
-  title: string = 'V Queen Management';
   subscription: Subscription | undefined;
     constructor(
     private titleService: Title,

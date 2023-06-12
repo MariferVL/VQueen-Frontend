@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 /* Mobile Styles */
 #mainAdmin {
     display: flex;
@@ -8,13 +6,12 @@
     justify-content: center;
     text-align: center;
     padding: 2rem;
-    font-family: 'Roboto', sans-serif;
 
   }
   
-  h2 {
+  h1 {
     color: white;
-    font-weight: bold;
+    font-weight: bolder;
     width: fit-content;
     margin: 4rem auto;
   }
@@ -28,14 +25,14 @@
   }
   
   .btn {
+    border-radius: 0;
     display: block;
     margin-bottom: 1rem;
-    padding: 1rem 2rem;
+    padding: 1rem;
     font-size: 1.5rem;
     color: #fff;
     background-color: #D2AC47;
     border: none;
-    border-radius: 0.5rem;
     text-decoration: none;
     font-weight: bold;
     width: 13rem;
