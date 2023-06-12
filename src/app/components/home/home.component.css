@@ -23,7 +23,6 @@ button {
   margin: 0.5em;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
   color: whitesmoke;
-  font-family: 'Open Sans', sans-serif;
   text-transform: capitalize;
   line-height: 3em;
   transition: 0.3s;

@@ -1,6 +1,5 @@
 #detailedMenu {
   color: white;
-  font-family: 'Crimson Text', sans-serif;
   text-align: center;
   padding: 50px;
 
@@ -33,7 +32,6 @@ a {
   background-color: #AE8625;
   color: #fff;
   border: none;
-  border-radius: 0.5rem;
   font-weight: bold;
   padding: 0.5rem 2rem;
   cursor: pointer;

@@ -1,13 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 /* Base Styles */
 section {
     text-align: center;
     padding: 40px;
     margin: 8rem auto;
     max-width: 47rem;    
-    font-family: 'Roboto', sans-serif;
-
 }
 
 h2 {

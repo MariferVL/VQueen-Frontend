@@ -19,7 +19,6 @@
   width: 30rem;
   padding: 2rem;
   background-color: #ffffffa5;
-  border-radius: 0.5rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 }
 
@@ -45,7 +44,6 @@
   background-color: #AE8625;
   color: #fff;
   border: none;
-  border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   cursor: pointer;
 }
