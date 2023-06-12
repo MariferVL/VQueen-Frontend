@@ -1,13 +1,13 @@
 <section id="employeesAdmin">
-  <h2>Employees Management</h2>
-  <button (click)="onSubmit()">Add New Member</button>
+  <h1>Employees Management</h1>
+  <button id="addMember" (click)="onSubmit()">Add New Member</button>
   <button class="back" routerLink="/admin">
     <fa-icon [icon]="faArrowLeft"></fa-icon>
     <!-- <span>{{ faArrowLeft }}</span> -->
   </button>
   <div class="container">
     <aside>
-      <h3>Roles Types</h3>
+      <h2>Roles Types</h2>
       <ul>
         <li (click)="filterEmployees('all')">All</li>
         <li (click)="filterEmployees('chef')">Chef</li>
