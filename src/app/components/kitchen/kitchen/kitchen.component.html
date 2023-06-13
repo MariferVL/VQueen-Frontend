@@ -1,23 +1,20 @@
-<section id="kitchenLogin" *ngIf="!isLoggedIn">
-  <app-login-form></app-login-form>
-</section>
-
 <section id="kitchen" *ngIf="isLoggedIn">
-  <h1>Kitchen Component</h1>
-  <p>Orders waiting to be prepared: {{ waitingOrdersCount }}</p>
-
-  <div class="order-container">
-    <div *ngFor="let order of filteredOrders | slice:0:6" class="order-item">
+  <header>
+    <h1>Kitchen Component</h1>
+    <p>Orders waiting to be prepared: {{ waitingOrdersCount }}</p>
+  </header>
+  <div class="container">
+    <div *ngFor="let order of filteredOrders | slice:0:6" class='order'>
       <div class="order-details">
-        <h6>Order Details:</h6>
+        <h2>Order Details:</h2>
+        <h3 class="order-elem">Status: {{ order.status }}</h3>
         <p class="order-elem">Customer: {{ order.client }}</p>
         <p class="order-elem">ID: {{ order.id }}</p>
-        <p class="order-elem">Status: {{ order.status }}</p>
         <p class="order-elem">Date Entry: {{ order.dateEntry }}</p>
         <div *ngFor="let product of order.products" class="product-item">
           <label>
             <input type="checkbox">
-            {{ product.name }}  {{ product.qty || 1 }}
+            {{ product.name }} {{ product.qty || 1 }}
           </label>
         </div>
       </div>
@@ -27,4 +24,3 @@
     </div>
   </div>
 </section>
-<!-- <button (click)="logout()">LogOut</button> -->
